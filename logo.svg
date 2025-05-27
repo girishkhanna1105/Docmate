@@ -1,0 +1,19 @@
+<svg width="500" height="120" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, sans-serif">
+  <!-- Stethoscope Earpieces -->
+  <circle cx="40" cy="20" r="6" fill="#333"></circle>
+  <circle cx="80" cy="20" r="6" fill="#333"></circle>
+
+  <!-- Stethoscope Metal Tubes -->
+  <path d="M40 20 Q60 40 60 60" stroke="#bbb" stroke-width="4" fill="none"></path>
+  <path d="M80 20 Q60 40 60 60" stroke="#bbb" stroke-width="4" fill="none"></path>
+
+  <!-- Stethoscope Tubing -->
+  <path d="M60 60 C60 80, 30 90, 30 100" stroke="#00bcd4" stroke-width="6" fill="none"></path>
+  <circle cx="30" cy="100" r="7" fill="#fff" stroke="#333" stroke-width="3"></circle>
+  <circle cx="30" cy="100" r="3" fill="#333"></circle>
+
+  <!-- Logo Text -->
+  <text x="100" y="80" font-size="38" fill="#00bcd4" font-weight="bold">Doc</text>
+  <text x="178" y="80" font-size="38" fill="#374151" font-weight="bold">mate</text>
+  <text x="285" y="80" font-size="38" fill="#374151">-Ai</text>
+</svg>

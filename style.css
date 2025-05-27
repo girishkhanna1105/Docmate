@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+
+.hero{
+   padding-top: 100px;
+   text-align: center;
+   max-width: 800px;
+   margin: auto;
+}
+.hero h1{
+    font-size: 83px;
+    font-weight: 700;
+    margin-bottom: 20PX;
+}
+.hero p{
+    font-size: 25px;
+    color: #555;
+    padding: 0 10px;
+}
+.get-started {
+     background: #00b894;
+     font-size: 25px;
+     padding: 14px 28px;
+     color: #fff;
+     border: none;
+     border-radius: 7cm;
+     margin-top: 32px;
+     margin-bottom: 32px ;
+}
+.features{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 16px;
+  transition: 0.3s;
+  margin-right: 40px;
+  max-width: 250px;
+  text-align: center;
+}
+.card img{
+    height: 61px;
+    margin-bottom: 7px;
+}
+.card h3{
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.card p{
+    font-size: 23px;
+    margin-top: 20px;
+    margin-bottom: 70px
+}
+.get-started a{
+    text-decoration: none;
+    color: white;
+}
+.features a{
+    text-decoration: none;
+    color: black;
+}
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.navbar{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    height: 50px;
+    margin: 15px;
+    
+    
+}
+.logo img{
+   height: 200px;
+   margin-top: 20px;
+}
+.nav_item{
+    margin-right: 50px;
+}
+.nav_item ul{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+.nav_item ul a{
+    text-decoration: none;
+    color: black;
+    font-size:23px;
+}
+ */

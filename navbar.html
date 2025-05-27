@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 10 10 0 0;
+  background-color: rgb(226, 255, 255);
+}
+/* === set the real height once === */
+:root {
+  --nav-height: 100px;   /* adjust to the actual pixel height you want */
+}
+
+/* body (or a <main>) starts *after* the navbar */
+
+
+
+.nav_item{
+    margin-right: 50px;
+}
+.logo img {
+   height: 150px;
+  
+   padding:35px;
+   
+}
+
+.items {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.items li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  font-size: 20PX;
+}
+
+.items li a:hover {
+  color: #007BFF;
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+       <div class="logo">
+          <img onclick="location.href='index.html'" src="logo.svg" alt="Logo" />
+       </div>
+     <div class="nav_item">
+           <ul class="items">
+               <li><a href="#">Disease Info</a></li>
+               <li><a href="#">Symptom Checker</a></li>
+               <li><a href="#">Book Appointment</a></li>
+               <li><a href="#">GPT</a></li>
+           </ul>
+       </div>
+  </div>
+</body>
+</html>

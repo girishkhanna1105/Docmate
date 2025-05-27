@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocMate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="hero">
+     <h1>
+        Your AI-Powered <br>
+        Health Assistant
+     </h1>
+     <p>
+        Get localized information on common diseases, check your 
+        Symptoms with our chatbot, and consult with a doctor 
+        through video chat
+     </p>
+     <button class="get-started"><a href="">Get Started</a></button>
+      <div class="features">
+         <div class="card">
+             <a href="diseasefinder.html"><img src="location.svg" alt=""></a>
+             <div class="container">
+                 <h3>Disease information
+                 </h3>
+                 <p>
+                    view current diesease trend and details for your area
+                 </p>
+             </div>
+        </div>
+        <div class="card">
+            <a href="docmatebot.html"> <img src="symptom.svg" alt=""> </a>
+             <div class="container">
+                 <h3>Symptom Checker
+                 </h3>
+                 <p>
+                    Get assistance with evaluating your symptoms
+                 </p>
+             </div>
+        </div>
+        <div class="card">
+           <a href="appointment.html"><img src="appointment.svg" alt=""></a>
+             <div class="container">
+                 <h3>Book an Appointment
+                 </h3>
+                 <p>
+                    Schedule a video consulting with an doctor 
+                 </p>
+             </div>
+        </div>
+     </div>
+  </div>
+  <script>
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar').innerHTML = data;
+    });
+</script>
+
+</body>
+</html>
