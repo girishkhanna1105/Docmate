@@ -1,0 +1,51 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# dotenv environment files
+.env
+.env.*.local
+
+# Logs
+logs/
+*.log
+logfile*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# OS system files
+.DS_Store
+Thumbs.db
+
+# MongoDB data dump
+dump/
+*.local
+
+# Compiled files
+dist/
+build/
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# IDE/editor specific
+.vscode/
+.idea/
+*.swp
+
+# Optional: frontend static files (if generated separately)
+frontend/node_modules/
+frontend/build/
+
+# Optional: uploads/temp files
+uploads/
+temp/
+*.bak

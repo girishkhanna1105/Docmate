@@ -1,0 +1,301 @@
+[
+  {
+    "name": "Dengue",
+    "description": "A mosquito-borne viral infection causing high fever, severe headache, muscle and joint pain.",
+    "symptoms": ["Fever", "Severe headache", "Retro-orbital pain", "Joint pain", "Rash"],
+    "causes": ["Infection by dengue virus serotypes 1-4 via Aedes mosquitoes"],
+    "prevention": ["Eliminate standing water", "Use mosquito nets/repellent", "Community fogging"],
+    "treatment": "Supportive care: fluids, acetaminophen; avoid NSAIDs that increase bleeding risk.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Delhi",
+          "state": "Delhi",
+          "country": "India",
+          "coordinates": { "lat": 28.7041, "lng": 77.1025 }
+        },
+        "cases": 5200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-15T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.076, "lng": 72.8777 }
+        },
+        "cases": 4300,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-16T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Malaria",
+    "description": "Parasitic infection transmitted by Anopheles mosquitoes, leading to cyclical fevers and anemia.",
+    "symptoms": ["Intermittent fever", "Chills", "Sweating", "Fatigue", "Anemia"],
+    "causes": ["Plasmodium falciparum, vivax, malariae, ovale parasites"],
+    "prevention": ["Insecticide-treated nets", "Indoor residual spraying", "Chemoprophylaxis when traveling"],
+    "treatment": "Artemisinin-based combination therapy (ACT) plus supportive care.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Guwahati",
+          "state": "Assam",
+          "country": "India",
+          "coordinates": { "lat": 26.1445, "lng": 91.7362 }
+        },
+        "cases": 2700,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-17T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Tuberculosis",
+    "description": "Chronic bacterial infection by Mycobacterium tuberculosis, primarily affecting the lungs.",
+    "symptoms": ["Persistent cough >3 weeks", "Hemoptysis", "Night sweats", "Weight loss", "Fever"],
+    "causes": ["Airborne transmission of Mycobacterium tuberculosis"],
+    "prevention": ["BCG vaccination", "Early detection & DOTS therapy", "Ventilation in crowded spaces"],
+    "treatment": "6-month regimen: isoniazid, rifampicin, pyrazinamide, ethambutol (first 2 months), followed by isoniazid + rifampicin.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Kolkata",
+          "state": "West Bengal",
+          "country": "India",
+          "coordinates": { "lat": 22.5726, "lng": 88.3639 }
+        },
+        "cases": 3100,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-10T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "COVID-19",
+    "description": "Respiratory illness caused by SARS-CoV-2 with a broad spectrum of severity.",
+    "symptoms": ["Fever", "Cough", "Shortness of breath", "Loss of taste/smell", "Fatigue"],
+    "causes": ["Inhalation of respiratory droplets/aerosols containing SARS-CoV-2"],
+    "prevention": ["Vaccination", "Masking in high-risk settings", "Hand hygiene", "Ventilation"],
+    "treatment": "Supportive care, antivirals (e.g., nirmatrelvir-ritonavir), corticosteroids for severe cases.",
+    "severity": "Medium",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Bengaluru",
+          "state": "Karnataka",
+          "country": "India",
+          "coordinates": { "lat": 12.9716, "lng": 77.5946 }
+        },
+        "cases": 850,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-18T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Type 2 Diabetes Mellitus",
+    "description": "Metabolic disorder characterized by insulin resistance and relative insulin deficiency.",
+    "symptoms": ["Polyuria", "Polydipsia", "Polyphagia", "Fatigue", "Blurred vision"],
+    "causes": ["Genetic predisposition", "Obesity", "Sedentary lifestyle"],
+    "prevention": ["Healthy diet", "Regular exercise", "Weight management", "Periodic screening"],
+    "treatment": "Lifestyle modification, metformin, GLP-1 agonists, SGLT2 inhibitors, insulin if needed.",
+    "severity": "Medium",
+    "category": "Chronic",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Ahmedabad",
+          "state": "Gujarat",
+          "country": "India",
+          "coordinates": { "lat": 23.0225, "lng": 72.5714 }
+        },
+        "cases": 12000,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Hypertension",
+    "description": "Persistently elevated blood pressure ≥140/90 mm Hg associated with cardiovascular risk.",
+    "symptoms": ["Often asymptomatic", "Headache", "Dizziness", "Blurred vision"],
+    "causes": ["Genetic factors", "High-salt diet", "Obesity", "Stress", "Sedentary lifestyle"],
+    "prevention": ["Low-salt diet", "Physical activity", "Weight control", "Stress management"],
+    "treatment": "ACE inhibitors, ARBs, calcium channel blockers, thiazide diuretics; lifestyle changes.",
+    "severity": "Medium",
+    "category": "Chronic",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Chennai",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "coordinates": { "lat": 13.0827, "lng": 80.2707 }
+        },
+        "cases": 15000,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-14T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Asthma",
+    "description": "Chronic inflammatory airway disease with episodic wheezing, coughing, and breathlessness.",
+    "symptoms": ["Wheezing", "Coughing at night", "Chest tightness", "Shortness of breath"],
+    "causes": ["Allergens", "Air pollution", "Exercise", "Respiratory infections", "Cold air"],
+    "prevention": ["Avoid triggers", "Inhaled corticosteroids", "Regular monitoring"],
+    "treatment": "Inhaled corticosteroids + long-acting β2-agonists, short-acting bronchodilator for relief.",
+    "severity": "Medium",
+    "category": "Chronic",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Jaipur",
+          "state": "Rajasthan",
+          "country": "India",
+          "coordinates": { "lat": 26.9124, "lng": 75.7873 }
+        },
+        "cases": 4100,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-13T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Typhoid Fever",
+    "description": "Systemic infection by Salmonella Typhi causing prolonged fever and abdominal symptoms.",
+    "symptoms": ["Sustained high fever", "Abdominal pain", "Diarrhea or constipation", "Rose spots"],
+    "causes": ["Ingestion of food or water contaminated with S. Typhi"],
+    "prevention": ["Vaccination", "Safe drinking water", "Proper sanitation", "Handwashing"],
+    "treatment": "Ceftriaxone or azithromycin; fluoroquinolones where susceptible.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Lucknow",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.8467, "lng": 80.9462 }
+        },
+        "cases": 1900,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-11T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Cholera",
+    "description": "Acute diarrheal illness caused by Vibrio cholerae, leading to severe dehydration.",
+    "symptoms": ["Profuse watery diarrhea", "Vomiting", "Rapid dehydration", "Muscle cramps"],
+    "causes": ["Contaminated water or food with V. cholerae O1/O139"],
+    "prevention": ["Safe water supply", "Oral cholera vaccine", "Sanitation", "Hand hygiene"],
+    "treatment": "Prompt oral rehydration; IV fluids and doxycycline for severe cases.",
+    "severity": "Critical",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Kochi",
+          "state": "Kerala",
+          "country": "India",
+          "coordinates": { "lat": 9.9312, "lng": 76.2673 }
+        },
+        "cases": 600,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-09T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Seasonal Influenza",
+    "description": "Contagious respiratory illness caused by influenza A/B viruses, peaking every winter season.",
+    "symptoms": ["Fever", "Chills", "Body aches", "Sore throat", "Cough"],
+    "causes": ["Inhalation of droplets containing influenza virus"],
+    "prevention": ["Annual flu vaccination", "Hand hygiene", "Respiratory etiquette"],
+    "treatment": "Oseltamivir within 48 h of symptom onset; supportive care.",
+    "severity": "Low",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Shimla",
+          "state": "Himachal Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 31.1048, "lng": 77.1734 }
+        },
+        "cases": 350,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Chronic Obstructive Pulmonary Disease (COPD)",
+    "description": "Progressive airflow limitation typically due to chronic bronchitis or emphysema.",
+    "symptoms": ["Chronic cough", "Sputum production", "Dyspnea on exertion", "Wheezing"],
+    "causes": ["Long-term smoking", "Air pollution", "Occupational dust/chemicals"],
+    "prevention": ["Smoking cessation", "Clean cooking fuels", "Vaccinations (influenza, pneumococcal)"],
+    "treatment": "Bronchodilators, inhaled steroids, pulmonary rehabilitation, oxygen therapy for hypoxemia.",
+    "severity": "High",
+    "category": "Chronic",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Nagpur",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 21.1458, "lng": 79.0882 }
+        },
+        "cases": 2200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-07T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Hepatitis B",
+    "description": "Liver infection caused by hepatitis B virus (HBV) that can become chronic.",
+    "symptoms": ["Jaundice", "Fatigue", "Abdominal pain", "Dark urine", "Nausea"],
+    "causes": ["Exposure to infected blood, sexual contact, perinatal transmission"],
+    "prevention": ["Three-dose HBV vaccine", "Safe needle practices", "Screening blood products"],
+    "treatment": "Tenofovir or entecavir for chronic infection; monitor liver function.",
+    "severity": "Medium",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Hyderabad",
+          "state": "Telangana",
+          "country": "India",
+          "coordinates": { "lat": 17.3850, "lng": 78.4867 }
+        },
+        "cases": 2600,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-06T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  }
+]

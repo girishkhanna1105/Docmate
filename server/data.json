@@ -1,0 +1,1158 @@
+[
+  {
+    "name": "Dengue",
+    "description": "A mosquito-borne viral infection causing high fever, severe headache, muscle and joint pain.",
+    "symptoms": ["Fever", "Severe headache", "Retro-orbital pain", "Joint pain", "Rash"],
+    "causes": ["Infection by dengue virus serotypes 1-4 via Aedes mosquitoes"],
+    "prevention": ["Eliminate standing water", "Use mosquito nets/repellent", "Community fogging"],
+    "treatment": "Supportive care: fluids, acetaminophen; avoid NSAIDs that increase bleeding risk.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Delhi",
+          "state": "Delhi",
+          "country": "India",
+          "coordinates": { "lat": 28.7041, "lng": 77.1025 }
+        },
+        "cases": 5200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-15T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.076, "lng": 72.8777 }
+        },
+        "cases": 4300,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-16T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Chennai",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "coordinates": { "lat": 13.0827, "lng": 80.2707 }
+        },
+        "cases": 3800,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-14T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Bengaluru",
+          "state": "Karnataka",
+          "country": "India",
+          "coordinates": { "lat": 12.9716, "lng": 77.5946 }
+        },
+        "cases": 3200,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-18T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kolkata",
+          "state": "West Bengal",
+          "country": "India",
+          "coordinates": { "lat": 22.5726, "lng": 88.3639 }
+        },
+        "cases": 2900,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-10T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Type 2 Diabetes Mellitus",
+    "description": "Metabolic disorder characterized by insulin resistance and relative insulin deficiency.",
+    "symptoms": ["Polyuria", "Polydipsia", "Polyphagia", "Fatigue", "Blurred vision"],
+    "causes": ["Genetic predisposition", "Obesity", "Sedentary lifestyle"],
+    "prevention": ["Healthy diet", "Regular exercise", "Weight management", "Periodic screening"],
+    "treatment": "Lifestyle modification, metformin, GLP-1 agonists, SGLT2 inhibitors, insulin if needed.",
+    "severity": "Medium",
+    "category": "Chronic",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Delhi",
+          "state": "Delhi",
+          "country": "India",
+          "coordinates": { "lat": 28.7041, "lng": 77.1025 }
+        },
+        "cases": 15200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.076, "lng": 72.8777 }
+        },
+        "cases": 18500,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-13T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Ahmedabad",
+          "state": "Gujarat",
+          "country": "India",
+          "coordinates": { "lat": 23.0225, "lng": 72.5714 }
+        },
+        "cases": 12000,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Pune",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 18.5204, "lng": 73.8567 }
+        },
+        "cases": 9800,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-11T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Jaipur",
+          "state": "Rajasthan",
+          "country": "India",
+          "coordinates": { "lat": 26.9124, "lng": 75.7873 }
+        },
+        "cases": 8200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-13T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Hypertension",
+    "description": "Persistently elevated blood pressure ≥140/90 mm Hg associated with cardiovascular risk.",
+    "symptoms": ["Often asymptomatic", "Headache", "Dizziness", "Blurred vision"],
+    "causes": ["Genetic factors", "High-salt diet", "Obesity", "Stress", "Sedentary lifestyle"],
+    "prevention": ["Low-salt diet", "Physical activity", "Weight control", "Stress management"],
+    "treatment": "ACE inhibitors, ARBs, calcium channel blockers, thiazide diuretics; lifestyle changes.",
+    "severity": "Medium",
+    "category": "Chronic",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Delhi",
+          "state": "Delhi",
+          "country": "India",
+          "coordinates": { "lat": 28.7041, "lng": 77.1025 }
+        },
+        "cases": 22000,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-14T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Chennai",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "coordinates": { "lat": 13.0827, "lng": 80.2707 }
+        },
+        "cases": 15000,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-14T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Bengaluru",
+          "state": "Karnataka",
+          "country": "India",
+          "coordinates": { "lat": 12.9716, "lng": 77.5946 }
+        },
+        "cases": 13500,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-15T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Hyderabad",
+          "state": "Telangana",
+          "country": "India",
+          "coordinates": { "lat": 17.3850, "lng": 78.4867 }
+        },
+        "cases": 11200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-16T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kolkata",
+          "state": "West Bengal",
+          "country": "India",
+          "coordinates": { "lat": 22.5726, "lng": 88.3639 }
+        },
+        "cases": 10800,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "COVID-19",
+    "description": "Respiratory illness caused by SARS-CoV-2 with a broad spectrum of severity.",
+    "symptoms": ["Fever", "Cough", "Shortness of breath", "Loss of taste/smell", "Fatigue"],
+    "causes": ["Inhalation of respiratory droplets/aerosols containing SARS-CoV-2"],
+    "prevention": ["Vaccination", "Masking in high-risk settings", "Hand hygiene", "Ventilation"],
+    "treatment": "Supportive care, antivirals (e.g., nirmatrelvir-ritonavir), corticosteroids for severe cases.",
+    "severity": "Medium",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.076, "lng": 72.8777 }
+        },
+        "cases": 1200,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-18T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Bengaluru",
+          "state": "Karnataka",
+          "country": "India",
+          "coordinates": { "lat": 12.9716, "lng": 77.5946 }
+        },
+        "cases": 850,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-18T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Chennai",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "coordinates": { "lat": 13.0827, "lng": 80.2707 }
+        },
+        "cases": 920,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-17T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Pune",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 18.5204, "lng": 73.8567 }
+        },
+        "cases": 680,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-16T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Ahmedabad",
+          "state": "Gujarat",
+          "country": "India",
+          "coordinates": { "lat": 23.0225, "lng": 72.5714 }
+        },
+        "cases": 590,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-15T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Asthma",
+    "description": "Chronic inflammatory airway disease with episodic wheezing, coughing, and breathlessness.",
+    "symptoms": ["Wheezing", "Coughing at night", "Chest tightness", "Shortness of breath"],
+    "causes": ["Allergens", "Air pollution", "Exercise", "Respiratory infections", "Cold air"],
+    "prevention": ["Avoid triggers", "Inhaled corticosteroids", "Regular monitoring"],
+    "treatment": "Inhaled corticosteroids + long-acting β2-agonists, short-acting bronchodilator for relief.",
+    "severity": "Medium",
+    "category": "Chronic",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Delhi",
+          "state": "Delhi",
+          "country": "India",
+          "coordinates": { "lat": 28.7041, "lng": 77.1025 }
+        },
+        "cases": 6800,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-13T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Jaipur",
+          "state": "Rajasthan",
+          "country": "India",
+          "coordinates": { "lat": 26.9124, "lng": 75.7873 }
+        },
+        "cases": 4100,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-13T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Gurgaon",
+          "state": "Haryana",
+          "country": "India",
+          "coordinates": { "lat": 28.4595, "lng": 77.0266 }
+        },
+        "cases": 3200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-14T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Noida",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 28.5355, "lng": 77.3910 }
+        },
+        "cases": 2800,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Faridabad",
+          "state": "Haryana",
+          "country": "India",
+          "coordinates": { "lat": 28.4089, "lng": 77.3178 }
+        },
+        "cases": 2400,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-11T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Malaria",
+    "description": "Parasitic infection transmitted by Anopheles mosquitoes, leading to cyclical fevers and anemia.",
+    "symptoms": ["Intermittent fever", "Chills", "Sweating", "Fatigue", "Anemia"],
+    "causes": ["Plasmodium falciparum, vivax, malariae, ovale parasites"],
+    "prevention": ["Insecticide-treated nets", "Indoor residual spraying", "Chemoprophylaxis when traveling"],
+    "treatment": "Artemisinin-based combination therapy (ACT) plus supportive care.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Guwahati",
+          "state": "Assam",
+          "country": "India",
+          "coordinates": { "lat": 26.1445, "lng": 91.7362 }
+        },
+        "cases": 2700,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-17T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Bhubaneswar",
+          "state": "Odisha",
+          "country": "India",
+          "coordinates": { "lat": 20.2961, "lng": 85.8245 }
+        },
+        "cases": 2200,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-16T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Raipur",
+          "state": "Chhattisgarh",
+          "country": "India",
+          "coordinates": { "lat": 21.2514, "lng": 81.6296 }
+        },
+        "cases": 1800,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-15T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Ranchi",
+          "state": "Jharkhand",
+          "country": "India",
+          "coordinates": { "lat": 23.3441, "lng": 85.3096 }
+        },
+        "cases": 1500,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-14T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Imphal",
+          "state": "Manipur",
+          "country": "India",
+          "coordinates": { "lat": 24.8170, "lng": 93.9368 }
+        },
+        "cases": 980,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-13T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Tuberculosis",
+    "description": "Chronic bacterial infection by Mycobacterium tuberculosis, primarily affecting the lungs.",
+    "symptoms": ["Persistent cough >3 weeks", "Hemoptysis", "Night sweats", "Weight loss", "Fever"],
+    "causes": ["Airborne transmission of Mycobacterium tuberculosis"],
+    "prevention": ["BCG vaccination", "Early detection & DOTS therapy", "Ventilation in crowded spaces"],
+    "treatment": "6-month regimen: isoniazid, rifampicin, pyrazinamide, ethambutol (first 2 months), followed by isoniazid + rifampicin.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Kolkata",
+          "state": "West Bengal",
+          "country": "India",
+          "coordinates": { "lat": 22.5726, "lng": 88.3639 }
+        },
+        "cases": 3100,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-10T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Patna",
+          "state": "Bihar",
+          "country": "India",
+          "coordinates": { "lat": 25.5941, "lng": 85.1376 }
+        },
+        "cases": 2800,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-11T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Lucknow",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.8467, "lng": 80.9462 }
+        },
+        "cases": 2400,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kanpur",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.4499, "lng": 80.3319 }
+        },
+        "cases": 2100,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-09T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Varanasi",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 25.3176, "lng": 82.9739 }
+        },
+        "cases": 1900,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Typhoid Fever",
+    "description": "Systemic infection by Salmonella Typhi causing prolonged fever and abdominal symptoms.",
+    "symptoms": ["Sustained high fever", "Abdominal pain", "Diarrhea or constipation", "Rose spots"],
+    "causes": ["Ingestion of food or water contaminated with S. Typhi"],
+    "prevention": ["Vaccination", "Safe drinking water", "Proper sanitation", "Handwashing"],
+    "treatment": "Ceftriaxone or azithromycin; fluoroquinolones where susceptible.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Lucknow",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.8467, "lng": 80.9462 }
+        },
+        "cases": 1900,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-11T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kanpur",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.4499, "lng": 80.3319 }
+        },
+        "cases": 1600,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-10T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Allahabad",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 25.4358, "lng": 81.8463 }
+        },
+        "cases": 1400,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-09T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Agra",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 27.1767, "lng": 78.0081 }
+        },
+        "cases": 1200,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Meerut",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 28.9845, "lng": 77.7064 }
+        },
+        "cases": 980,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-07T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Cholera",
+    "description": "Acute diarrheal illness caused by Vibrio cholerae, leading to severe dehydration.",
+    "symptoms": ["Profuse watery diarrhea", "Vomiting", "Rapid dehydration", "Muscle cramps"],
+    "causes": ["Contaminated water or food with V. cholerae O1/O139"],
+    "prevention": ["Safe water supply", "Oral cholera vaccine", "Sanitation", "Hand hygiene"],
+    "treatment": "Prompt oral rehydration; IV fluids and doxycycline for severe cases.",
+    "severity": "Critical",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Kochi",
+          "state": "Kerala",
+          "country": "India",
+          "coordinates": { "lat": 9.9312, "lng": 76.2673 }
+        },
+        "cases": 600,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-09T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Thiruvananthapuram",
+          "state": "Kerala",
+          "country": "India",
+          "coordinates": { "lat": 8.5241, "lng": 76.9366 }
+        },
+        "cases": 480,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kozhikode",
+          "state": "Kerala",
+          "country": "India",
+          "coordinates": { "lat": 11.2588, "lng": 75.7804 }
+        },
+        "cases": 420,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-07T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kollam",
+          "state": "Kerala",
+          "country": "India",
+          "coordinates": { "lat": 8.8932, "lng": 76.6141 }
+        },
+        "cases": 350,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-06T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Thrissur",
+          "state": "Kerala",
+          "country": "India",
+          "coordinates": { "lat": 10.5276, "lng": 76.2144 }
+        },
+        "cases": 290,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-05T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Seasonal Influenza",
+    "description": "Contagious respiratory illness caused by influenza A/B viruses, peaking every winter season.",
+    "symptoms": ["Fever", "Chills", "Body aches", "Sore throat", "Cough"],
+    "causes": ["Inhalation of droplets containing influenza virus"],
+    "prevention": ["Annual flu vaccination", "Hand hygiene", "Respiratory etiquette"],
+    "treatment": "Oseltamivir within 48 h of symptom onset; supportive care.",
+    "severity": "Low",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Shimla",
+          "state": "Himachal Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 31.1048, "lng": 77.1734 }
+        },
+        "cases": 350,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Manali",
+          "state": "Himachal Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 32.2396, "lng": 77.1887 }
+        },
+        "cases": 280,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-07T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Dharamshala",
+          "state": "Himachal Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 32.2190, "lng": 76.3234 }
+        },
+        "cases": 220,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-06T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kullu",
+          "state": "Himachal Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 31.9575, "lng": 77.1097 }
+        },
+        "cases": 190,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-05T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Solan",
+          "state": "Himachal Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 30.9045, "lng": 77.0967 }
+        },
+        "cases": 150,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-04T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Chronic Obstructive Pulmonary Disease (COPD)",
+    "description": "Progressive airflow limitation typically due to chronic bronchitis or emphysema.",
+    "symptoms": ["Chronic cough", "Sputum production", "Dyspnea on exertion", "Wheezing"],
+    "causes": ["Long-term smoking", "Air pollution", "Occupational dust/chemicals"],
+    "prevention": ["Smoking cessation", "Clean cooking fuels", "Vaccinations (influenza, pneumococcal)"],
+    "treatment": "Bronchodilators, inhaled steroids, pulmonary rehabilitation, oxygen therapy for hypoxemia.",
+    "severity": "High",
+    "category": "Chronic",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Nagpur",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 21.1458, "lng": 79.0882 }
+        },
+        "cases": 2200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-07T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Nashik",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.9975, "lng": 73.7898 }
+        },
+        "cases": 1800,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-06T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Aurangabad",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.8762, "lng": 75.3433 }
+        },
+        "cases": 1500,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-05T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Solapur",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 17.6599, "lng": 75.9064 }
+        },
+        "cases": 1200,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-04T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Amravati",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 20.9374, "lng": 77.7796 }
+        },
+        "cases": 950,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-03T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Hepatitis B",
+    "description": "Viral infection causing liver inflammation, which can lead to chronic liver disease.",
+    "symptoms": ["Fatigue", "Jaundice", "Abdominal pain", "Nausea", "Dark urine"],
+    "causes": ["HBV virus transmitted via blood, sexual contact, or perinatal transmission"],
+    "prevention": ["Vaccination", "Safe injection practices", "Screening of blood products"],
+    "treatment": "Antivirals (tenofovir, entecavir) for chronic cases; no specific treatment for acute.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Visakhapatnam",
+          "state": "Andhra Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 17.6868, "lng": 83.2185 }
+        },
+        "cases": 1800,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-10T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Vijayawada",
+          "state": "Andhra Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 16.5062, "lng": 80.6480 }
+        },
+        "cases": 1500,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-09T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Guntur",
+          "state": "Andhra Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 16.3067, "lng": 80.4365 }
+        },
+        "cases": 1200,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Nellore",
+          "state": "Andhra Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 14.4426, "lng": 79.9865 }
+        },
+        "cases": 950,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-07T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kurnool",
+          "state": "Andhra Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 15.8281, "lng": 78.0373 }
+        },
+        "cases": 750,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-06T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Leptospirosis",
+    "description": "Bacterial infection transmitted through water contaminated by animal urine.",
+    "symptoms": ["High fever", "Muscle pain", "Headache", "Jaundice", "Red eyes"],
+    "causes": ["Exposure to Leptospira bacteria in contaminated water/soil"],
+    "prevention": ["Avoid wading in floodwaters", "Protective clothing", "Rodent control"],
+    "treatment": "Doxycycline or penicillin antibiotics; supportive care for severe cases.",
+    "severity": "Medium",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Thane",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.2183, "lng": 72.9781 }
+        },
+        "cases": 650,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Vasai-Virar",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.4259, "lng": 72.8225 }
+        },
+        "cases": 520,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-11T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kalyan-Dombivli",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.2354, "lng": 73.1296 }
+        },
+        "cases": 430,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-10T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Ulhasnagar",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.2215, "lng": 73.1645 }
+        },
+        "cases": 350,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-09T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Bhiwandi",
+          "state": "Maharashtra",
+          "country": "India",
+          "coordinates": { "lat": 19.2962, "lng": 73.0636 }
+        },
+        "cases": 280,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Chikungunya",
+    "description": "Mosquito-borne viral disease causing fever and severe joint pain.",
+    "symptoms": ["High fever", "Severe joint pain", "Headache", "Muscle pain", "Rash"],
+    "causes": ["CHIKV virus transmitted by Aedes mosquitoes"],
+    "prevention": ["Mosquito control measures", "Use of repellents", "Eliminating standing water"],
+    "treatment": "Symptomatic relief with NSAIDs; no specific antiviral treatment.",
+    "severity": "Medium",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Pondicherry",
+          "state": "Puducherry",
+          "country": "India",
+          "coordinates": { "lat": 11.9139, "lng": 79.8145 }
+        },
+        "cases": 1200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-15T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Cuddalore",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "coordinates": { "lat": 11.7447, "lng": 79.7680 }
+        },
+        "cases": 950,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-14T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Karaikal",
+          "state": "Puducherry",
+          "country": "India",
+          "coordinates": { "lat": 10.9254, "lng": 79.8380 }
+        },
+        "cases": 750,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-13T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Villupuram",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "coordinates": { "lat": 11.9398, "lng": 79.4976 }
+        },
+        "cases": 600,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Mayiladuthurai",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "coordinates": { "lat": 11.1031, "lng": 79.6550 }
+        },
+        "cases": 480,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-11T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Japanese Encephalitis",
+    "description": "Mosquito-borne viral brain infection prevalent in rural agricultural areas.",
+    "symptoms": ["Fever", "Headache", "Vomiting", "Disorientation", "Seizures"],
+    "causes": ["Japanese encephalitis virus transmitted by Culex mosquitoes"],
+    "prevention": ["Vaccination", "Mosquito control", "Personal protection measures"],
+    "treatment": "Supportive care; no specific antiviral treatment available.",
+    "severity": "High",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Gorakhpur",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.7606, "lng": 83.3732 }
+        },
+        "cases": 420,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-10T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Basti",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.7948, "lng": 82.7329 }
+        },
+        "cases": 350,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-09T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Deoria",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.5047, "lng": 83.7873 }
+        },
+        "cases": 280,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Maharajganj",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 27.1303, "lng": 83.5629 }
+        },
+        "cases": 220,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-07T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Kushinagar",
+          "state": "Uttar Pradesh",
+          "country": "India",
+          "coordinates": { "lat": 26.7403, "lng": 83.8889 }
+        },
+        "cases": 180,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-06T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Scrub Typhus",
+    "description": "Bacterial infection transmitted by chigger mites, causing fever and rash.",
+    "symptoms": ["Fever", "Headache", "Muscle pain", "Eschar", "Rash"],
+    "causes": ["Orientia tsutsugamushi bacteria transmitted by mite bites"],
+    "prevention": ["Avoiding mite-infested areas", "Insect repellents", "Protective clothing"],
+    "treatment": "Doxycycline or azithromycin antibiotics.",
+    "severity": "Medium",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Shillong",
+          "state": "Meghalaya",
+          "country": "India",
+          "coordinates": { "lat": 25.5788, "lng": 91.8933 }
+        },
+        "cases": 320,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Tura",
+          "state": "Meghalaya",
+          "country": "India",
+          "coordinates": { "lat": 25.5143, "lng": 90.2026 }
+        },
+        "cases": 250,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-07T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Jowai",
+          "state": "Meghalaya",
+          "country": "India",
+          "coordinates": { "lat": 25.4456, "lng": 92.1969 }
+        },
+        "cases": 190,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-06T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Nongstoin",
+          "state": "Meghalaya",
+          "country": "India",
+          "coordinates": { "lat": 25.5176, "lng": 91.2679 }
+        },
+        "cases": 150,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-05T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Baghmara",
+          "state": "Meghalaya",
+          "country": "India",
+          "coordinates": { "lat": 25.2038, "lng": 90.6314 }
+        },
+        "cases": 120,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-04T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Acute Gastroenteritis",
+    "description": "Inflammation of the stomach and intestines causing diarrhea and vomiting.",
+    "symptoms": ["Diarrhea", "Vomiting", "Abdominal cramps", "Fever", "Dehydration"],
+    "causes": ["Viruses (norovirus, rotavirus)", "Bacteria (E. coli, Salmonella)", "Parasites"],
+    "prevention": ["Hand hygiene", "Safe food handling", "Clean water supply", "Rotavirus vaccine"],
+    "treatment": "Oral rehydration; IV fluids for severe cases; antibiotics if bacterial cause.",
+    "severity": "Medium",
+    "category": "Infectious",
+    "prevalenceByLocation": [
+      {
+        "location": {
+          "city": "Surat",
+          "state": "Gujarat",
+          "country": "India",
+          "coordinates": { "lat": 21.1702, "lng": 72.8311 }
+        },
+        "cases": 1800,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-12T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Vadodara",
+          "state": "Gujarat",
+          "country": "India",
+          "coordinates": { "lat": 22.3072, "lng": 73.1812 }
+        },
+        "cases": 1500,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-11T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Rajkot",
+          "state": "Gujarat",
+          "country": "India",
+          "coordinates": { "lat": 22.3039, "lng": 70.8022 }
+        },
+        "cases": 1200,
+        "trend": "Increasing",
+        "lastUpdated": "2025-05-10T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Bhavnagar",
+          "state": "Gujarat",
+          "country": "India",
+          "coordinates": { "lat": 21.7645, "lng": 72.1519 }
+        },
+        "cases": 950,
+        "trend": "Stable",
+        "lastUpdated": "2025-05-09T00:00:00.000Z"
+      },
+      {
+        "location": {
+          "city": "Jamnagar",
+          "state": "Gujarat",
+          "country": "India",
+          "coordinates": { "lat": 22.4707, "lng": 70.0577 }
+        },
+        "cases": 750,
+        "trend": "Decreasing",
+        "lastUpdated": "2025-05-08T00:00:00.000Z"
+      }
+    ],
+    "isActive": true
+  }
+]

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Symptom Checker - DocMate</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .chatbot-container {
+            padding: 120px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            height: calc(100vh - 160px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            padding: 25px;
+            border-radius: 20px 20px 0 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .chat-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            overflow-y: auto;
+            border-left: 1px solid #e9ecef;
+            border-right: 1px solid #e9ecef;
+            min-height: 400px;
+            max-height: 500px;
+        }
+        
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .message.user {
+            flex-direction: row-reverse;
+        }
+        
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .bot-avatar {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+        }
+        
+        .user-avatar {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+        }
+        
+        .message-content {
+            max-width: 70%;
+            padding: 15px 18px;
+            border-radius: 18px;
+            line-height: 1.5;
+        }
+        
+        .bot-message {
+            background: #f8f9fa;
+            color: #333;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user-message {
+            background: #00b894;
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message-time {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+        
+        .chat-input-container {
+            background: white;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 0 0 20px 20px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+            resize: none;
+            min-height: 50px;
+            max-height: 100px;
+        }
+        
+        .chat-input:focus {
+            border-color: #74b9ff;
+        }
+        
+        .send-button {
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            min-width: 60px;
+        }
+        
+        .send-button:hover:not(:disabled) {
+            background: #00a085;
+        }
+        
+        .send-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .symptom-checker {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .symptom-form {
+            display: grid;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .symptom-input-group {
+            display: grid;
+            grid-template-columns: 1fr 120px 120px;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .symptom-input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+        
+        .symptom-select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+        
+        .add-symptom-btn {
+            background: #74b9ff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .add-symptom-btn:hover {
+            background: #0984e3;
+        }
+        
+        .analyze-btn {
+            background: #e17055;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        
+        .analyze-btn:hover {
+            background: #d63031;
+        }
+        
+        .assessment-result {
+            background: #d1f2eb;
+            border: 1px solid #00b894;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .assessment-title {
+            color: #00b894;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .conditions-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .condition-item {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            border-left: 4px solid #00b894;
+        }
+        
+        .urgency-high {
+            background: #fff5f5;
+            border-left-color: #e74c3c;
+        }
+        
+        .urgency-medium {
+            background: #fffbf0;
+            border-left-color: #f39c12;
+        }
+        
+        .urgency-low {
+            background: #f0fff4;
+            border-left-color: #27ae60;
+        }
+        
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 15px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #74b9ff;
+            border-radius: 50%;
+            animation: typingDot 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typingDot {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .quick-action-btn {
+            background: #e9ecef;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .quick-action-btn:hover {
+            background: #74b9ff;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .chatbot-container {
+                padding: 120px 10px 20px;
+                height: calc(100vh - 140px);
+            }
+            
+            .message-content {
+                max-width: 85%;
+            }
+            
+            .symptom-input-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    
+    <div class="chatbot-container">
+        <div class="chat-header">
+            <h1>🤖 DocMate AI Assistant</h1>
+            <p>Describe your symptoms and get instant health guidance</p>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-avatar bot-avatar">🤖</div>
+                <div class="message-content bot-message">
+                    Hello! I'm DocMate AI. I can help you understand your symptoms and provide health guidance. How are you feeling today?
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="sendQuickMessage('I have a headache')">I have a headache</button>
+                        <button class="quick-action-btn" onclick="sendQuickMessage('I feel feverish')">I feel feverish</button>
+                        <button class="quick-action-btn" onclick="sendQuickMessage('I want to check my symptoms')">Check symptoms</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="message-avatar bot-avatar">🤖</div>
+            <span>DocMate is typing</span>
+            <div class="typing-dots">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <textarea 
+                class="chat-input" 
+                id="messageInput" 
+                placeholder="Describe your symptoms or ask a health question..."
+                rows="1"
+            ></textarea>
+            <button class="send-button" id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        let sessionId = null;
+        let symptoms = [];
+        
+        // Load navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+        
+        // Initialize chat session
+        async function initializeChat() {
+            try {
+                const response = await fetch('/api/chatbot/session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userInfo: {
+                            name: 'User',
+                            timestamp: new Date()
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    sessionId = data.data.sessionId;
+                }
+            } catch (error) {
+                console.error('Failed to initialize chat:', error);
+            }
+        }
+        
+        // Send message
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message to chat
+            addMessage('user', message);
+            input.value = '';
+            
+            // Show typing indicator
+            showTyping(true);
+            
+            try {
+                const response = await fetch('/api/chatbot/message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        sessionId: sessionId,
+                        message: message
+                    })
+                });
+                
+                const data = await response.json();
+                showTyping(false);
+                
+                if (data.success) {
+                    addMessage('bot', data.data.botMessage.message);
+                    
+                   
+                    if (message.toLowerCase().includes('symptom') || 
+                        message.toLowerCase().includes('feel') ||
+                        message.toLowerCase().includes('pain') ||
+                        message.toLowerCase().includes('sick')) {
+                        showSymptomChecker();
+                    }
+                } else {
+                    addMessage('bot', 'Sorry, I encountered an error. Please try again.');
+                }
+            } catch (error) {
+                showTyping(false);
+                addMessage('bot', 'Sorry, I\'m having trouble connecting. Please check your internet connection.');
+            }
+        }
+        
+        // Add message to chat
+        function addMessage(sender, content) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar ${sender}-avatar">
+                    ${sender === 'bot' ? '🤖' : '👤'}
+                </div>
+                <div class="message-content ${sender}-message">
+                    ${content}
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // Quick message buttons
+        function sendQuickMessage(message) {
+            document.getElementById('messageInput').value = message;
+            sendMessage();
+        }
+        
+        // Show symptom checker
+        function showSymptomChecker() {
+            const checkerHTML = `
+                <div class="symptom-checker">
+                    <h4>🩺 Detailed Symptom Analysis</h4>
+                    <p>For better analysis, please provide detailed information about your symptoms:</p>
+                    
+                    <div class="symptom-form" id="symptomForm">
+                        <div class="symptom-input-group">
+                            <input type="text" class="symptom-input" placeholder="Enter symptom (e.g., headache, fever)" />
+                            <select class="symptom-select">
+                                <option value="Mild">Mild</option>
+                                <option value="Moderate">Moderate</option>
+                                <option value="Severe">Severe</option>
+                            </select>
+                            <input type="text" class="symptom-input" placeholder="Duration (e.g., 2 days)" />
+                        </div>
+                    </div>
+                    
+                    <button class="add-symptom-btn" onclick="addSymptomRow()">+ Add Another Symptom</button>
+                    <button class="analyze-btn" onclick="analyzeSymptoms()">🔍 Analyze Symptoms</button>
+                </div>
+            `;
+            
+            addMessage('bot', checkerHTML);
+        }
+        
+        // Add symptom row
+        function addSymptomRow() {
+            const form = document.getElementById('symptomForm');
+            const newRow = document.createElement('div');
+            newRow.className = 'symptom-input-group';
+            newRow.innerHTML = `
+                <input type="text" class="symptom-input" placeholder="Enter symptom" />
+                <select class="symptom-select">
+                    <option value="Mild">Mild</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Severe">Severe</option>
+                </select>
+                <input type="text" class="symptom-input" placeholder="Duration" />
+            `;
+            form.appendChild(newRow);
+        }
+        
+        // Analyze symptoms
+               async function analyzeSymptoms() {
+            const form = document.getElementById('symptomForm');
+            const symptomGroups = form.querySelectorAll('.symptom-input-group');
+            const collectedSymptoms = [];
+
+            symptomGroups.forEach(group => {
+                const symptom = group.querySelector('input:nth-child(1)').value.trim();
+                const severity = group.querySelector('select').value;
+                const duration = group.querySelector('input:nth-child(3)').value.trim();
+
+                if (symptom && duration) {
+                    collectedSymptoms.push({ symptom, severity, duration });
+                }
+            });
+
+            if (collectedSymptoms.length === 0) {
+                addMessage('bot', 'Please enter at least one valid symptom with duration.');
+                return;
+            }
+
+            // Show loading indicator
+            showTyping(true);
+
+            try {
+                const response = await fetch('/api/chatbot/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sessionId, symptoms: collectedSymptoms })
+                });
+
+                const data = await response.json();
+                showTyping(false);
+
+                if (data.success) {
+                    const conditionsHTML = data.data.possibleConditions.map(cond => `
+                        <li class="condition-item urgency-${cond.urgency.toLowerCase()}">
+                            <strong>${cond.name}</strong> - ${cond.urgency} urgency
+                            <br><small>${cond.description}</small>
+                        </li>
+                    `).join('');
+
+                    const resultBlock = `
+                        <div class="assessment-result">
+                            <div class="assessment-title">🩻 Possible Conditions</div>
+                            <ul class="conditions-list">${conditionsHTML}</ul>
+                        </div>
+                    `;
+                    addMessage('bot', resultBlock);
+                } else {
+                    addMessage('bot', 'Sorry, I couldn’t analyze the symptoms right now.');
+                }
+            } catch (error) {
+                showTyping(false);
+                addMessage('bot', 'Something went wrong while analyzing. Please try again later.');
+            }
+        }
+
+        function showTyping(show) {
+            const typing = document.getElementById('typingIndicator');
+            typing.style.display = show ? 'flex' : 'none';
+        }
+
+        // Start the session on page load
+        window.onload = initializeChat;
+    </script>
+</body>
+</html>

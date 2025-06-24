@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Information - DocMate</title>
+    <link rel="stylesheet" href="diseasefinder.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    
+    <div class="disease-finder">
+        <div class="search-section">
+            <h1>🔍 Disease Information</h1>
+            <p>Discover current disease trends and detailed information for your area</p>
+            
+            <div class="search-form">
+                <input type="text" class="search-input" id="locationInput" placeholder="Enter your city or state">
+                <button class="search-btn" onclick="searchDiseases()">Search Diseases</button>
+                <button class="search-btn" onclick="getMyLocation()" style="background: #6c5ce7;">📍 Use My Location</button>
+            </div>
+        </div>
+        
+        <div class="location-section" id="locationSection" style="display: none;">
+            <div class="location-info">
+                <div class="location-icon"></div>
+                <div>
+                    <h3 id="currentLocation">Your Location</h3>
+                    <p>Disease information for your area</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="loadingIndicator" class="loading" style="display: none;">
+            <p>🔄 Loading disease information...</p>
+        </div>
+        
+        <div id="errorMessage" class="error" style="display: none;"></div>
+        
+        <div class="disease-grid" id="diseaseGrid">
+            <!-- Disease cards will be populated here -->
+        </div>
+    </div>
+
+    <script>
+        let currentLocation = '';
+        
+        // Load navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+        
+        // Get user's location
+        function getMyLocation() {
+            if (navigator.geolocation) {
+                showLoading(true);
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        
+                        // Reverse geocoding (you can use a service like OpenStreetMap Nominatim)
+                        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const city = data.address.city || data.address.town || data.address.village || 'Unknown';
+                                const state = data.address.state || '';
+                                currentLocation = state ? `${city}, ${state}` : city;
+                                
+                                document.getElementById('locationInput').value = currentLocation;
+                                document.getElementById('currentLocation').textContent = currentLocation;
+                                document.getElementById('locationSection').style.display = 'block';
+                                
+                                searchDiseases();
+                            })
+                            .catch(() => {
+                                showError('Unable to get location details');
+                                showLoading(false);
+                            });
+                    },
+                    (error) => {
+                        showError('Location access denied. Please enter your location manually.');
+                        showLoading(false);
+                    }
+                );
+            } else {
+                showError('Geolocation is not supported by this browser');
+            }
+        }
+        
+        // Search for diseases
+        async function searchDiseases() {
+            const location = document.getElementById('locationInput').value.trim();
+            
+            if (!location) {
+                showError('Please enter a location');
+                return;
+            }
+            
+            showLoading(true);
+            
+            try {
+                const response = await fetch(`http://localhost:5000/api/diseases?location=${encodeURIComponent(location)}&limit=20`);
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayDiseases(data.data);
+                    currentLocation = location;
+                    document.getElementById('currentLocation').textContent = location;
+                    document.getElementById('locationSection').style.display = 'block';
+                } else {
+                    showError(data.error || 'Failed to fetch disease information');
+                }
+            } catch (error) {
+                showError('Network error. Please check your connection.');
+            }
+            
+            showLoading(false);
+        }
+        
+        // Display diseases
+        function displayDiseases(diseases) {
+            const grid = document.getElementById('diseaseGrid');
+            
+            if (diseases.length === 0) {
+                grid.innerHTML = '<div class="error">No disease data found for this location. Try a different location.</div>';
+                return;
+            }
+            
+            grid.innerHTML = diseases.map(disease => {
+                const locationData = disease.prevalenceByLocation.find(loc => 
+                    loc.location.city.toLowerCase().includes(currentLocation.toLowerCase()) ||
+                    loc.location.state.toLowerCase().includes(currentLocation.toLowerCase())
+                ) || disease.prevalenceByLocation[0];
+                
+                return `
+                    <div class="disease-card">
+                        <div class="disease-header">
+                            <h3 class="disease-name">${disease.name}</h3>
+                            <span class="severity-badge severity-${disease.severity.toLowerCase()}">${disease.severity}</span>
+                        </div>
+                        
+                        <p class="disease-description">${disease.description}</p>
+                        
+                        <div class="disease-stats">
+                            <div class="stat">
+                                <div class="stat-number">${locationData.cases.toLocaleString()}</div>
+                                <div class="stat-label">Cases</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number trend-${locationData.trend.toLowerCase()}">${locationData.trend}</div>
+                                <div class="stat-label">Trend</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">${disease.category}</div>
+                                <div class="stat-label">Category</div>
+                            </div>
+                        </div>
+                        
+                        <div class="symptoms-list">
+                            <h4>Common Symptoms:</h4>
+                            ${disease.symptoms.slice(0, 5).map(symptom => 
+                                `<span class="symptom-tag">${symptom}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Utility functions
+        function showLoading(show) {
+            document.getElementById('loadingIndicator').style.display = show ? 'block' : 'none';
+        }
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Allow Enter key to search
+        document.getElementById('locationInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchDiseases();
+            }
+        });
+        
+        // Load Delhi data by default
+        window.addEventListener('load', () => {
+            document.getElementById('locationInput').value = 'Delhi';
+            searchDiseases();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patient Signup - DocMate</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #f4fefe;
+      padding-top: 100px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .signup-box {
+      background: white;
+      max-width: 400px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .signup-box h2 {
+      color: #00b894;
+      margin-bottom: 20px;
+    }
+    .signup-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      outline: none;
+    }
+    .signup-box button {
+      width: 100%;
+      background: #00b894;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .signup-box button:hover {
+      background: #009f7c;
+    }
+    .toggle {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .toggle a {
+      color: #0984e3;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="signup-box">
+    <h2>Patient Signup</h2>
+    <input type="text" placeholder="Full Name" />
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <input type="password" placeholder="Confirm Password" />
+    <button>Sign Up</button>
+    <div class="toggle">Already have an account? <a href="patient-login.html">Login here</a></div>
+  </div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

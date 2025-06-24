@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Signup - DocMate</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #f4fefe;
+      padding-top: 100px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .signup-box {
+      background: white;
+      max-width: 450px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .signup-box h2 {
+      color: #0984e3;
+      margin-bottom: 20px;
+    }
+    .signup-box input, .signup-box select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      outline: none;
+    }
+    .signup-box button {
+      width: 100%;
+      background: #0984e3;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .signup-box button:hover {
+      background: #0652dd;
+    }
+    .toggle {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .toggle a {
+      color: #00b894;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="signup-box">
+    <h2>Doctor Signup< /h2>
+    <input type="text" placeholder="Full Name" required />
+    <input type="email" placeholder="Email" required />
+    <input type="password" placeholder="Password" required />
+    <input type="password" placeholder="Confirm Password" required />
+    <input type="text" placeholder="Medical Registration Number" required />
+    
+    <select required>
+      <option value="" disabled selected>Choose Degree</option>
+      <option value="MBBS">MBBS</option>
+      <option value="BDS">BDS</option>
+      <option value="MD">MD</option>
+      <option value="MS">MS</option>
+      <option value="MCh">MCh</option>
+      <option value="DM">DM</option>
+    </select>
+
+    <select required>
+      <option value="" disabled selected>Specialization</option>
+      <option>Cardiology</option>
+      <option>Dermatology</option>
+      <option>ENT</option>
+      <option>General Physician</option>
+      <option>Gynecology</option>
+      <option>Neurology</option>
+      <option>Orthopedics</option>
+      <option>Pediatrics</option>
+      <option>Psychiatry</option>
+      <option>Surgery</option>
+    </select>
+
+    <input type="text" placeholder="Years of Experience" required />
+
+    <button>Sign Up</button>
+    <div class="toggle">Already have an account? <a href="doctor-login.html">Login here</a></div>
+  </div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

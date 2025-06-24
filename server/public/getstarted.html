@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started - DocMate</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4fefe;
+      margin: 0;
+      padding-top: 100px;
+      text-align: center;
+    }
+
+    .start-container {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 2.2rem;
+      color: #00b894;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .role-options {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .role-card {
+      flex: 1;
+      min-width: 220px;
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 15px;
+      transition: 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .role-card:hover {
+      border-color: #00b894;
+      transform: scale(1.03);
+    }
+
+    .role-card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .role-card button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background: #00b894;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .role-card button:hover {
+      background: #009f7c;
+    }
+
+    @media (max-width: 600px) {
+      .role-options {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="start-container">
+    <h1>Let's Get Started</h1>
+    <p>Choose how you want to continue:</p>
+
+    <div class="role-options">
+      <div class="role-card">
+        <img src="patient.svg" alt="Patient" width="60">
+        <h3>Continue as Patient</h3>
+        <p>Check symptoms, find diseases, and book appointments.</p>
+        <button onclick="location.href='patient-login.html'">Login / Signup</button>
+      </div>
+
+      <div class="role-card">
+        <img src="doctor.svg" alt="Doctor" width="60">
+        <h3>Continue as Doctor</h3>
+        <p>Manage your availability and consult with patients.</p>
+        <button onclick="location.href='doctor-login.html'">Login / Signup</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

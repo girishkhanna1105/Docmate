@@ -1,0 +1,89 @@
+ body{
+    padding-top: 100px;
+    color: #00b894
+ }
+ .maincontent{
+     background: white;
+      max-width: 700px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 70px rgba(0,0,0,0.1)
+ }
+ .maincontent select{
+    width: 100%;
+    padding: 12px;
+     margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    
+ }
+ .heading{
+    font-weight:lighter ;
+    text-align: left;
+    font-size: 25px;
+    margin-bottom: 11px;
+ }
+ .content{
+  text-align: left;
+  padding-bottom: 12px;
+  padding-top: 12px;
+   color: #00b894
+    
+ }
+
+ .vc{
+    font-size: 20px;
+ }
+ .schedule{
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+ }
+ input[type="date"],
+input[type="time"] {
+  padding: 12px ;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 297px;
+  margin-right: 16px;
+  margin-left: 16px;
+  
+
+}
+
+.patientdetails input{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+} 
+.bookbtn{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bookbtn button{
+     width: 25%;
+     height: 50px;
+    background: #00b894;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.bookbtn button:hover{
+    background-color: #149af3;
+}
+    /* Vertical centering (optional) */
+
+
+ 
+    
