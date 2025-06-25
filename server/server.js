@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
+dotenv.config();
 
 // Import routes
 const diseaseRoutes = require('./routes/diseaseRoutes');
@@ -11,7 +12,7 @@ const appointmentRoutes = require('./routes/appointmentRoutes');
 const chatbotRoutes = require('./routes/chatbotRoutes');
 const locationRoutes = require('./routes/locationRoutes');
 
-dotenv.config();
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
