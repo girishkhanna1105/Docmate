@@ -60,18 +60,55 @@
 
   <div class="login-box">
     <h2>Patient Login</h2>
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Password" />
-    <button>Login</button>
+    <input type="email" placeholder="Email" id="email" />
+    <input type="password" placeholder="Password" id="password" />
+    <button onclick="handleLogin()">Login</button>
     <div class="toggle">Don’t have an account? <a href="patient-signup.html">Signup here</a></div>
   </div>
 
-  <script>
+ <script>
+   
     fetch('navbar.html')
       .then(res => res.text())
       .then(data => {
         document.getElementById('navbar').innerHTML = data;
       });
-  </script>
+  
+  async function handleLogin() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const role = window.location.href.includes('doctor') ? 'doctor' : 'patient';
+
+    if (!email || !password) return alert("Please fill in all fields");
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert(`Welcome back, ${data.user.name}`);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        // Redirect based on role
+        if (data.user.role === 'doctor') {
+          window.location.href = '/doctor-dashboard.html';
+        } else {
+          window.location.href = '/patient-dashboard.html';
+        }
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Login failed. Please try again.');
+    }
+  }
+</script>
+
 </body>
 </html>

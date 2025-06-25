@@ -53,12 +53,34 @@
      </div>
   </div>
   <script>
-  fetch('navbar.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('navbar').innerHTML = data;
-    });
+  document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.getElementById("navbar");
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        navbar.innerHTML = data;
+
+        // 🔁 Attach click handler after navbar is inserted
+        const profileIcon = navbar.querySelector('.profile-icon');
+        if (profileIcon) {
+          profileIcon.addEventListener("click", openProfile);
+        }
+      });
+  });
+
+  function openProfile() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      alert("Please login first");
+      window.location.href = "getstarted.html";
+      return;
+    }
+
+    const dash = user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+    window.location.href = dash;
+  }
 </script>
+
 
 </body>
 </html>

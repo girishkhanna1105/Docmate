@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Doctor Dashboard - DocMate</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4fefe;
+      padding: 50px;
+      text-align: center;
+    }
+    .dashboard-box {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    h1 {
+      color: #0984e3;
+    }
+    .actions button {
+      padding: 12px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #0984e3;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-box">
+    <h1>Welcome, Dr. <span id="username"></span></h1>
+    <p>This is your doctor dashboard.</p>
+    <div class="actions">
+      <button onclick="location.href='doctor-appointments.html'">View Appointments</button>
+      <button onclick="location.href='profile.html'">My Profile</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || user.role !== "doctor") {
+      window.location.href = "doctor-login.html";
+    } else {
+      document.getElementById("username").innerText = user.name;
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = "getstarted.html";
+    }
+  </script>
+</body>
+</html>

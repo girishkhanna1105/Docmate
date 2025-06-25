@@ -59,14 +59,15 @@
   <div id="navbar"></div>
 
   <div class="signup-box">
-    <h2>Patient Signup</h2>
-    <input type="text" placeholder="Full Name" />
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Password" />
-    <input type="password" placeholder="Confirm Password" />
-    <button>Sign Up</button>
-    <div class="toggle">Already have an account? <a href="patient-login.html">Login here</a></div>
-  </div>
+     <h2>Patient Signup</h2>
+     <input type="text" placeholder="Full Name" id="name" />
+     <input type="email" placeholder="Email" id="email" />
+     <input type="password" placeholder="Password" id="password" />
+     <input type="password" placeholder="Confirm Password" id="confirmPassword" />
+     <button onclick="handleSignup()">Sign Up</button>
+     <div class="toggle">Already have an account? <a href="patient-login.html">Login here</a></div>
+</div>
+
 
   <script>
     fetch('navbar.html')
@@ -74,6 +75,41 @@
       .then(data => {
         document.getElementById('navbar').innerHTML = data;
       });
+      
+    async function handleSignup() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+      if (!name || !email || !password || !confirmPassword) {
+        return alert("Please fill in all fields");
+      }
+
+      if (password !== confirmPassword) {
+        return alert("Passwords do not match");
+      }
+
+      try {
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password, role: "patient" })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          alert("Signup successful! Please log in.");
+          window.location.href = "patient-login.html";
+        } else {
+           alert(data.message || "Signup failed.");
+          }
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong. Try again.");
+      }
+    }
   </script>
 </body>
 </html>
