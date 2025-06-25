@@ -10,7 +10,7 @@ const diseaseRoutes = require('./routes/diseaseRoutes');
 const symptomRoutes = require('./routes/symptomRoutes');
 const appointmentRoutes = require('./routes/appointmentRoutes');
 const chatbotRoutes = require('./routes/chatbotRoutes');
-const locationRoutes = require('./routes/locationRoutes');
+const locationRoutes = require('./routes/LocationRoutes');
 
 
 
