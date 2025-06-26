@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: sans-serif; background: #f4fefe; padding-top: 120px; }
+    .form-box { width: 80%; max-width: 600px; background: white; margin: auto; padding: 40px; border-radius: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    input, select { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 10px; border: 1px solid #ddd; }
+    button { width: 100%; background: #00b894; color: white; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; border: none; }
+    button:hover { background: #009f7c; }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="form-box">
+    <h2>Book Appointment</h2>
+    <input id="name" placeholder="Enter Full Name">
+    <input id="phone" placeholder="Enter Mobile No">
+    <input id="email" placeholder="Enter E-Mail ID">
+    <input id="symptoms" placeholder="Enter Symptoms">
+    <label>Preferred Date:</label>
+    <input id="date" type="date">
+    <label>Preferred Time:</label>
+    <input id="time" type="time">
+    <label>Doctor Type:</label>
+    <select id="doctors">
+      <option>General Physician</option>
+      <option>Cardiologist</option>
+      <option>Dermatologist</option>
+    </select>
+    <button onclick="bookAppointment()">Book Now</button>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.getElementById("navbar");
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      navbar.innerHTML = data;
+
+      // Now that HTML is in, bind everything:
+      const hamburger = navbar.querySelector("#hamburgerBtn");
+      const mobileMenu = navbar.querySelector("#mobileMenu");
+      const desktopProfile = navbar.querySelector("#desktopProfile");
+      const mobileProfile = navbar.querySelector("#mobileProfile");
+      const logoBtn = navbar.querySelector("#logoBtn");
+
+      // Hamburger toggle
+      hamburger?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("show");
+      });
+
+      // Logo click
+      logoBtn?.addEventListener("click", () => {
+        window.location.href = "index.html";
+      });
+
+      // Profile logic
+      const openProfile = () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user) {
+          alert("Please login first");
+          window.location.href = "getstarted.html";
+          return;
+        }
+        window.location.href =
+          user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+      };
+
+      desktopProfile?.addEventListener("click", openProfile);
+      mobileProfile?.addEventListener("click", openProfile);
+    });
+});
+    async function bookAppointment() {
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const symptoms = document.getElementById("symptoms").value.trim();
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const doctorType = document.getElementById("doctors").value;
+
+      if (!name || !phone || !email || !symptoms || !date || !time || !doctorType) {
+        return alert("Please fill all fields");
+      }
+
+      try {
+        const res = await fetch("/api/appointments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            patientInfo: { name, email, phone, age: 25, gender: "Other" },
+            appointmentDetails: { preferredDate: date, preferredTime: time, consultationType: doctorType },
+            medicalInfo: { symptoms: [symptoms] },
+            status: "Pending"
+          })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          alert("Appointment booked!");
+          window.location.href = "patient-appointments.html";
+        } else {
+          alert(data.message || "Booking failed");
+        }
+      } catch (err) {
+        alert("Error booking appointment");
+      }
+    }
+  </script>
+</body>
+</html>

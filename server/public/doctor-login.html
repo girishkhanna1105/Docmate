@@ -1,58 +1,75 @@
-<!-- doctor-login.html -->
+<!-- Responsive version of doctor-login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doctor Login - DocMate</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       background: #f4fefe;
-      padding-top: 100px;
       font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding-top: 100px;
     }
+
     .login-box {
-      background: white;
       max-width: 400px;
       margin: auto;
       padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
     }
-    .login-box h2 {
+
+    h2 {
       color: #0984e3;
+      text-align: center;
       margin-bottom: 20px;
     }
-    .login-box input {
+
+    input {
       width: 100%;
       padding: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-radius: 10px;
-      border: 1px solid #ddd;
-      outline: none;
+      border: 1px solid #ccc;
+      font-size: 16px;
     }
-    .login-box button {
+
+    button {
       width: 100%;
+      padding: 12px;
       background: #0984e3;
       color: white;
       border: none;
-      padding: 12px;
       border-radius: 10px;
       font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
     }
-    .login-box button:hover {
+
+    button:hover {
       background: #0652dd;
     }
+
     .toggle {
       text-align: center;
       margin-top: 15px;
     }
+
     .toggle a {
-      color: #00b894;
+      color: #0984e3;
       text-decoration: none;
       font-weight: 500;
+    }
+
+    @media (max-width: 480px) {
+      .login-box {
+        margin: 20px;
+        padding: 25px;
+      }
     }
   </style>
 </head>
@@ -61,53 +78,81 @@
 
   <div class="login-box">
     <h2>Doctor Login</h2>
-    <input type="email" placeholder="Email" id="email" />
-    <input type="password" placeholder="Password" id="password" />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
     <button onclick="handleLogin()">Login</button>
-    <div class="toggle">Don’t have an account? <a href="doctor-signup.html">Signup here</a></div>
+    <div class="toggle">
+      Don't have an account? <a href="doctor-signup.html">Signup here</a>
+    </div>
   </div>
 
-   <script>
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-      });
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+          const navbar = document.getElementById("navbar");
+          navbar.innerHTML = data;
+
+          const hamburger = navbar.querySelector("#hamburgerBtn");
+          const mobileMenu = navbar.querySelector("#mobileMenu");
+          const desktopProfile = navbar.querySelector("#desktopProfile");
+          const mobileProfile = navbar.querySelector("#mobileProfile");
+          const logoBtn = navbar.querySelector("#logoBtn");
+
+          hamburger?.addEventListener("click", () => {
+            mobileMenu?.classList.toggle("show");
+          });
+
+          logoBtn?.addEventListener("click", () => {
+            window.location.href = "index.html";
+          });
+
+          const openProfile = () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user) {
+              alert("Please login first");
+              window.location.href = "getstarted.html";
+              return;
+            }
+            window.location.href = user.role === "doctor"
+              ? "doctor-dashboard.html"
+              : "patient-dashboard.html";
+          };
+
+          desktopProfile?.addEventListener("click", openProfile);
+          mobileProfile?.addEventListener("click", openProfile);
+        });
+    });
+
     async function handleLogin() {
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
-      const role = window.location.href.includes('doctor') ? 'doctor' : 'patient';
 
       if (!email || !password) return alert("Please fill in all fields");
 
       try {
-        const res = await fetch('/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password })
         });
 
         const data = await res.json();
 
         if (data.success) {
-          alert(`Welcome back, ${data.user.name}`);
-          localStorage.setItem('token', data.token);
-          localStorage.setItem('user', JSON.stringify(data.user));
-        // Redirect based on role
-          if (data.user.role === 'doctor') {
-            window.location.href = '/doctor-dashboard.html';
-          } else {
-            window.location.href = '/patient-dashboard.html';
-          }
+          alert("Welcome, " + data.user.name);
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          window.location.href = "doctor-dashboard.html";
         } else {
-          alert(data.message);
+          alert(data.message || "Login failed");
         }
       } catch (err) {
         console.error(err);
-        alert('Login failed. Please try again.');
+        alert("Something went wrong");
       }
     }
   </script>
-
 </body>
 </html>

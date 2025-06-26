@@ -1,55 +1,134 @@
+<!-- Responsive version of doctor-dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Doctor Dashboard - DocMate</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       background: #f4fefe;
-      padding: 50px;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding-top: 100px;
+    }
+
+    .dashboard-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
       text-align: center;
     }
-    .dashboard-box {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
+
     h1 {
       color: #0984e3;
+      margin-bottom: 10px;
     }
+
+    p {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
     .actions button {
       padding: 12px 20px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
       background: #0984e3;
       color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
       cursor: pointer;
+      font-size: 16px;
+    }
+
+    .actions button:hover {
+      background: #0652dd;
+    }
+
+    @media (max-width: 480px) {
+      .dashboard-container {
+        padding: 25px;
+        margin: 20px;
+      }
+
+      .actions button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="dashboard-box">
-    <h1>Welcome, Dr. <span id="username"></span></h1>
+  <div id="navbar"></div>
+
+  <div class="dashboard-container">
+    <h1>Welcome, <span id="username"></span></h1>
     <p>This is your doctor dashboard.</p>
     <div class="actions">
-      <button onclick="location.href='doctor-appointments.html'">View Appointments</button>
-      <button onclick="location.href='profile.html'">My Profile</button>
+      <button onclick="location.href='doctor-appointments.html'">My Appointments</button>
       <button onclick="logout()">Logout</button>
     </div>
   </div>
 
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+     const navbar = document.getElementById("navbar");
+     fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        navbar.innerHTML = data;
+
+      // Now that HTML is in, bind everything:
+        const hamburger = navbar.querySelector("#hamburgerBtn");
+        const mobileMenu = navbar.querySelector("#mobileMenu");
+        const desktopProfile = navbar.querySelector("#desktopProfile");
+        const mobileProfile = navbar.querySelector("#mobileProfile");
+        const logoBtn = navbar.querySelector("#logoBtn");
+
+      // Hamburger toggle
+        hamburger?.addEventListener("click", () => {
+          mobileMenu?.classList.toggle("show");
+        });
+
+      // Logo click
+         logoBtn?.addEventListener("click", () => {
+           window.location.href = "index.html";
+         });
+
+      // Profile logic
+         const openProfile = () => {
+          const user = JSON.parse(localStorage.getItem("user"));
+          if (!user) {
+            alert("Please login first");
+            window.location.href = "getstarted.html";
+            return;
+          }
+          window.location.href =
+            user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+        };
+
+        desktopProfile?.addEventListener("click", openProfile);
+        mobileProfile?.addEventListener("click", openProfile);
+      });
+    });
+
+
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user || user.role !== "doctor") {
       window.location.href = "doctor-login.html";
     } else {
-      document.getElementById("username").innerText = user.name;
+      document.getElementById("username").textContent = user.name;
     }
 
     function logout() {

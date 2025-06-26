@@ -41,7 +41,7 @@
              </div>
         </div>
         <div class="card">
-           <a href="appointment.html"><img src="appointment.svg" alt=""></a>
+           <a href="appointments.html"><img src="appointment.svg" alt=""></a>
              <div class="container">
                  <h3>Book an Appointment
                  </h3>
@@ -53,33 +53,48 @@
      </div>
   </div>
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const navbar = document.getElementById("navbar");
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        navbar.innerHTML = data;
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.getElementById("navbar");
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      navbar.innerHTML = data;
 
-        // 🔁 Attach click handler after navbar is inserted
-        const profileIcon = navbar.querySelector('.profile-icon');
-        if (profileIcon) {
-          profileIcon.addEventListener("click", openProfile);
-        }
+      // Now that HTML is in, bind everything:
+      const hamburger = navbar.querySelector("#hamburgerBtn");
+      const mobileMenu = navbar.querySelector("#mobileMenu");
+      const desktopProfile = navbar.querySelector("#desktopProfile");
+      const mobileProfile = navbar.querySelector("#mobileProfile");
+      const logoBtn = navbar.querySelector("#logoBtn");
+
+      // Hamburger toggle
+      hamburger?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("show");
       });
-  });
 
-  function openProfile() {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      alert("Please login first");
-      window.location.href = "getstarted.html";
-      return;
-    }
+      // Logo click
+      logoBtn?.addEventListener("click", () => {
+        window.location.href = "index.html";
+      });
 
-    const dash = user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
-    window.location.href = dash;
-  }
+      // Profile logic
+      const openProfile = () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user) {
+          alert("Please login first");
+          window.location.href = "getstarted.html";
+          return;
+        }
+        window.location.href =
+          user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+      };
+
+      desktopProfile?.addEventListener("click", openProfile);
+      mobileProfile?.addEventListener("click", openProfile);
+    });
+});
 </script>
+
 
 
 </body>

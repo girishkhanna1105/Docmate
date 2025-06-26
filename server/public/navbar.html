@@ -3,56 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>navbar</title>
+  <title>DocMate Navbar</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      font-family: sans-serif;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4fefe;
     }
 
     .navbar {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: #e2ffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 50px;
-      background-color: #e2ffff;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       z-index: 999;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .logo img {
-      height: 150px;
-      padding: 35px;
+      height: 50px;
       cursor: pointer;
     }
 
-    .items {
-      list-style: none;
+    .nav-links {
       display: flex;
+      align-items: center;
       gap: 40px;
     }
 
-    .items li a {
+    .nav-links a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
-      transition: color 0.2s ease;
-      font-size: 20px;
+      font-size: 18px;
+      transition: 0.2s ease;
     }
 
-    .items li a:hover {
+    .nav-links a:hover {
       color: #007BFF;
     }
 
@@ -64,49 +58,89 @@
       background: url('profile-icon.svg') center/cover no-repeat;
     }
 
-    .right-box {
-      display: flex;
-      align-items: center;
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
       gap: 20px;
+      background: #e2ffff;
+      padding: 20px;
+      position: absolute;
+      z-index: 10;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .mobile-menu .profile-icon {
+      align-self: flex-start;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-menu.show {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <div class="logo">
-      <img src="logo.svg" alt="Logo" onclick="location.href='index.html'" />
-    </div>
 
-    <div class="nav_item">
-      <ul class="items">
-        <li><a href="diseasefinder.html">Disease Info</a></li>
-        <li><a href="docmatebot.html">Symptom Checker</a></li>
-        <li><a href="appointment.html">Book Appointment</a></li>
-      </ul>
-    </div>
-
-    <!-- Profile Icon on the Right -->
-    <div class="right-box">
-      <div class="profile-icon" onclick="openProfile()"></div>
-    </div>
+  <!-- NAVBAR -->
+ <div class="navbar">
+  <div class="logo" id="logoBtn">
+    <img src="logo.svg" alt="DocMate-AI Logo">
   </div>
 
-  <script>
-    function openProfile() {
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (!user) {
-        // not logged in
-        alert("Please login first");
-        window.location.href = "getstarted.html";
-        return;
-      }
+  <div class="nav-links">
+    <a href="diseasefinder.html">Disease Info</a>
+    <a href="docmatebot.html">Symptom Checker</a>
+    <a href="appointments.html">Book Appointment</a>
+    <div class="profile-icon" id="desktopProfile"></div>
+  </div>
 
-      if (user.role === "doctor") {
-        window.location.href = "doctor-dashboard.html";
-      } else {
-        window.location.href = "patient-dashboard.html";
-      }
-    }
-  </script>
+  <div class="hamburger" id="hamburgerBtn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="diseasefinder.html">Disease Info</a>
+  <a href="docmatebot.html">Symptom Checker</a>
+  <a href="appointments.html">Book Appointment</a>
+  <div class="profile-icon" id="mobileProfile"></div>
+</div>
+
+
 </body>
 </html>

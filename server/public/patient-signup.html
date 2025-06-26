@@ -4,13 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Patient Signup - DocMate</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       background: #f4fefe;
       padding-top: 100px;
       font-family: 'Segoe UI', sans-serif;
     }
+
     .signup-box {
       background: white;
       max-width: 400px;
@@ -19,18 +21,21 @@
       border-radius: 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     .signup-box h2 {
       color: #00b894;
       margin-bottom: 20px;
+      text-align: center;
     }
+
     .signup-box input {
       width: 100%;
       padding: 12px;
       margin-bottom: 20px;
       border-radius: 10px;
       border: 1px solid #ddd;
-      outline: none;
     }
+
     .signup-box button {
       width: 100%;
       background: #00b894;
@@ -41,17 +46,32 @@
       font-weight: bold;
       cursor: pointer;
     }
+
     .signup-box button:hover {
       background: #009f7c;
     }
+
     .toggle {
       text-align: center;
       margin-top: 15px;
     }
+
     .toggle a {
       color: #0984e3;
       text-decoration: none;
       font-weight: 500;
+    }
+
+    @media (max-width: 480px) {
+      .signup-box {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      .signup-box input, .signup-box button {
+        font-size: 14px;
+        padding: 10px;
+      }
     }
   </style>
 </head>
@@ -59,23 +79,57 @@
   <div id="navbar"></div>
 
   <div class="signup-box">
-     <h2>Patient Signup</h2>
-     <input type="text" placeholder="Full Name" id="name" />
-     <input type="email" placeholder="Email" id="email" />
-     <input type="password" placeholder="Password" id="password" />
-     <input type="password" placeholder="Confirm Password" id="confirmPassword" />
-     <button onclick="handleSignup()">Sign Up</button>
-     <div class="toggle">Already have an account? <a href="patient-login.html">Login here</a></div>
-</div>
-
+    <h2>Patient Signup</h2>
+    <input type="text" placeholder="Full Name" id="name" />
+    <input type="email" placeholder="Email" id="email" />
+    <input type="password" placeholder="Password" id="password" />
+    <input type="password" placeholder="Confirm Password" id="confirmPassword" />
+    <button onclick="handleSignup()">Sign Up</button>
+    <div class="toggle">Already have an account? <a href="patient-login.html">Login here</a></div>
+  </div>
 
   <script>
-    fetch('navbar.html')
+    document.addEventListener("DOMContentLoaded", () => {
+     const navbar = document.getElementById("navbar");
+     fetch('navbar.html')
       .then(res => res.text())
       .then(data => {
-        document.getElementById('navbar').innerHTML = data;
+        navbar.innerHTML = data;
+
+      // Now that HTML is in, bind everything:
+        const hamburger = navbar.querySelector("#hamburgerBtn");
+        const mobileMenu = navbar.querySelector("#mobileMenu");
+        const desktopProfile = navbar.querySelector("#desktopProfile");
+        const mobileProfile = navbar.querySelector("#mobileProfile");
+        const logoBtn = navbar.querySelector("#logoBtn");
+
+      // Hamburger toggle
+        hamburger?.addEventListener("click", () => {
+          mobileMenu?.classList.toggle("show");
+        });
+
+      // Logo click
+         logoBtn?.addEventListener("click", () => {
+           window.location.href = "index.html";
+         });
+
+      // Profile logic
+         const openProfile = () => {
+          const user = JSON.parse(localStorage.getItem("user"));
+          if (!user) {
+            alert("Please login first");
+            window.location.href = "getstarted.html";
+            return;
+          }
+          window.location.href =
+            user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+        };
+
+        desktopProfile?.addEventListener("click", openProfile);
+        mobileProfile?.addEventListener("click", openProfile);
       });
-      
+    });
+
     async function handleSignup() {
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
@@ -103,8 +157,8 @@
           alert("Signup successful! Please log in.");
           window.location.href = "patient-login.html";
         } else {
-           alert(data.message || "Signup failed.");
-          }
+          alert(data.message || "Signup failed.");
+        }
       } catch (error) {
         console.error(error);
         alert("Something went wrong. Try again.");

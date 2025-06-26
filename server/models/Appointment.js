@@ -24,25 +24,27 @@ const appointmentSchema = new mongoose.Schema({
       required: true
     }
   },
-  appointmentDetails: {
-    preferredDate: {
-      type: Date,
-      required: true
-    },
-    preferredTime: {
-      type: String,
-      required: true
-    },
-    consultationType: {
-      type: String,
-      enum: ['Video Call'],
-      default: 'Video Call'
-    },
-    duration: {
-      type: Number, // in minutes
-      default: 30
-    }
+appointmentDetails: {
+  preferredDate: String,
+  preferredTime: String,
+  consultationType: {
+    type: String,
+    enum: [
+      'General Physician',
+      'Cardiologist',
+      'Dermatologist',
+      'ENT',
+      'Pediatrics',
+      'Neurology',
+      'Psychiatry',
+      'Orthopedics',
+      'Surgery',
+      'Gynecology'
+    ]
   },
+  videoCallLink: String
+}
+,
   medicalInfo: {
     symptoms: [String],
     urgency: {

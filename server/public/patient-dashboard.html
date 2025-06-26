@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Patient Dashboard - DocMate</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background: #f4fefe;
-      padding: 50px;
-      text-align: center;
+      padding-top: 100px;
     }
+
     .dashboard-box {
       max-width: 600px;
       margin: auto;
@@ -18,10 +20,18 @@
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
     }
+
     h1 {
       color: #00b894;
+      margin-bottom: 10px;
     }
+
+    .actions {
+      margin-top: 20px;
+    }
+
     .actions button {
       padding: 12px 20px;
       margin: 10px;
@@ -29,22 +39,83 @@
       border-radius: 10px;
       background: #00b894;
       color: white;
+      font-weight: 500;
       cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .actions button:hover {
+      background: #009f7c;
+    }
+
+    @media (max-width: 480px) {
+      .dashboard-box {
+        margin: 20px;
+        padding: 25px;
+      }
+
+      .actions button {
+        width: 100%;
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
+  <div id="navbar"></div>
+
   <div class="dashboard-box">
     <h1>Welcome, <span id="username"></span></h1>
     <p>This is your patient dashboard.</p>
     <div class="actions">
-      <button onclick="location.href='symptom-checker.html'">Check Symptoms</button>
-      <button onclick="location.href='appointments.html'">My Appointments</button>
+      <button onclick="location.href='docmatebot.html'">Check Symptoms</button>
+      <button onclick="location.href='patient-appointments.html'">My Appointments</button>
       <button onclick="logout()">Logout</button>
     </div>
   </div>
 
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+     const navbar = document.getElementById("navbar");
+     fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        navbar.innerHTML = data;
+
+      // Now that HTML is in, bind everything:
+        const hamburger = navbar.querySelector("#hamburgerBtn");
+        const mobileMenu = navbar.querySelector("#mobileMenu");
+        const desktopProfile = navbar.querySelector("#desktopProfile");
+        const mobileProfile = navbar.querySelector("#mobileProfile");
+        const logoBtn = navbar.querySelector("#logoBtn");
+
+      // Hamburger toggle
+        hamburger?.addEventListener("click", () => {
+          mobileMenu?.classList.toggle("show");
+        });
+
+      // Logo click
+         logoBtn?.addEventListener("click", () => {
+           window.location.href = "index.html";
+         });
+
+      // Profile logic
+         const openProfile = () => {
+          const user = JSON.parse(localStorage.getItem("user"));
+          if (!user) {
+            alert("Please login first");
+            window.location.href = "getstarted.html";
+            return;
+          }
+          window.location.href =
+            user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+        };
+
+        desktopProfile?.addEventListener("click", openProfile);
+        mobileProfile?.addEventListener("click", openProfile);
+      });
+    });
+
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user || user.role !== "patient") {
       window.location.href = "patient-login.html";

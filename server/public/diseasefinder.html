@@ -5,15 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disease Information - DocMate</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
         .disease-finder {
             padding: 120px 20px 40px;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .search-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px;
+            padding: clamp(20px, 5vw, 40px);
             border-radius: 20px;
             margin-bottom: 40px;
             color: white;
@@ -21,46 +34,72 @@
         }
         
         .search-section h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .search-section p {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
         
         .search-form {
             display: flex;
             gap: 15px;
             justify-content: center;
+            align-items: stretch;
             flex-wrap: wrap;
             margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .search-input {
             flex: 1;
+            min-width: 200px;
             max-width: 300px;
             padding: 15px;
             border: none;
             border-radius: 10px;
             font-size: 16px;
             outline: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .search-btn {
-            padding: 15px 30px;
+            padding: 15px 20px;
             background: #00b894;
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: clamp(14px, 2vw, 16px);
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-weight: 600;
+            min-width: 120px;
         }
         
         .search-btn:hover {
             background: #00a085;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .search-btn.location-btn {
+            background: #6c5ce7;
+        }
+        
+        .search-btn.location-btn:hover {
+            background: #5a4fcf;
         }
         
         .location-section {
             background: white;
-            padding: 30px;
+            padding: clamp(20px, 4vw, 30px);
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             margin-bottom: 30px;
@@ -78,47 +117,63 @@
             height: 24px;
             background: #00b894;
             border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .location-info h3 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 5px;
+        }
+        
+        .location-info p {
+            color: #666;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
         
         .disease-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: clamp(15px, 3vw, 25px);
             margin-top: 30px;
         }
         
         .disease-card {
             background: white;
             border-radius: 15px;
-            padding: 25px;
+            padding: clamp(20px, 4vw, 25px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
         }
         
         .disease-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
         .disease-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 15px;
+            gap: 10px;
         }
         
         .disease-name {
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
             font-weight: 700;
             color: #333;
+            line-height: 1.2;
         }
         
         .severity-badge {
             padding: 5px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: clamp(10px, 2vw, 12px);
             font-weight: 600;
             text-transform: uppercase;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         
         .severity-low { background: #d4edda; color: #155724; }
@@ -130,13 +185,19 @@
             color: #666;
             margin-bottom: 15px;
             line-height: 1.5;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         
         .disease-stats {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
             margin-bottom: 15px;
-            padding: 10px;
+            padding: 15px;
             background: #f8f9fa;
             border-radius: 8px;
         }
@@ -146,13 +207,14 @@
         }
         
         .stat-number {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             font-weight: 700;
             color: #00b894;
+            margin-bottom: 2px;
         }
         
         .stat-label {
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
             color: #666;
         }
         
@@ -163,22 +225,25 @@
         .symptoms-list h4 {
             margin-bottom: 8px;
             color: #333;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
         
         .symptom-tag {
             display: inline-block;
             background: #e9ecef;
-            padding: 4px 8px;
+            padding: 6px 10px;
             margin: 2px;
             border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
             color: #495057;
+            line-height: 1.2;
         }
         
         .loading {
             text-align: center;
             padding: 40px;
             color: #666;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
         
         .error {
@@ -187,10 +252,11 @@
             padding: 15px;
             border-radius: 10px;
             margin: 20px 0;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
         }
         
         .trend-indicator {
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             font-weight: 600;
         }
         
@@ -198,69 +264,199 @@
         .trend-decreasing { color: #28a745; }
         .trend-stable { color: #6c757d; }
         
-        @media (max-width: 768px) {
-            .search-form {
-                flex-direction: column;
-            }
-            
-            .search-input {
-                max-width: 100%;
-            }
-            
-            .disease-grid {
-                grid-template-columns: 1fr;
-            }
-        }
         .view-more-section {
             text-align: center;
             margin-top: 2rem;
-            padding: 2rem;
+            padding: clamp(20px, 4vw, 2rem);
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-
+        
+        .view-more-section h3 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 10px;
+        }
+        
+        .view-more-section p {
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
         .view-more-btn {
-            padding: 1rem 2rem;
+            padding: clamp(12px, 3vw, 1rem) clamp(20px, 4vw, 2rem);
             background: linear-gradient(135deg, #4ecdc4, #44a08d);
             color: white;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
             margin-top: 1rem;
+            min-width: 150px;
         }
-
+        
         .view-more-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(78, 205, 196, 0.4);
         }
-
+        
         .view-more-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
-
+        
         .results-info {
-            display: none; /* Removed this section */
+            display: none;
         }
-
+        
+        /* Mobile Specific Styles */
         @media (max-width: 768px) {
+            .disease-finder {
+                padding: 80px 15px 20px;
+            }
+            
             .search-form {
                 flex-direction: column;
+                align-items: center;
+                gap: 12px;
             }
             
             .search-input {
                 width: 100%;
-                max-width: 300px;
+                max-width: 100%;
+                min-width: auto;
+            }
+            
+            .search-btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 12px 20px;
             }
             
             .disease-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .disease-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .severity-badge {
+                align-self: flex-start;
+            }
+            
+            .disease-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                padding: 12px;
+            }
+            
+            .location-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                text-align: left;
+            }
+            
+            .location-info h3,
+            .location-info p {
+                text-align: left;
+            }
+        }
+        
+        /* Tablet Styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .disease-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+            
+            .search-form {
+                max-width: 500px;
+            }
+        }
+        
+        /* Large Screen Styles */
+        @media (min-width: 1200px) {
+            .disease-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+            
+            .disease-finder {
+                padding: 120px 40px 60px;
+            }
+        }
+        
+        /* Extra Large Screen Styles */
+        @media (min-width: 1600px) {
+            .disease-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            }
+            
+            .search-section {
+                padding: 50px;
+            }
+        }
+        
+        /* Small Mobile Styles */
+        @media (max-width: 480px) {
+            .disease-finder {
+                padding: 60px 10px 20px;
+            }
+            
+            .search-section {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+            
+            .disease-card {
+                padding: 15px;
+            }
+            
+            .disease-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .symptom-tag {
+                padding: 4px 8px;
+                margin: 1px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .search-section,
+            .view-more-section {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .search-btn {
+                display: none;
+            }
+            
+            .disease-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+        
+        /* High DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .location-icon {
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>');
+                background-size: 16px 16px;
+                background-repeat: no-repeat;
+                background-position: center;
             }
         }
     </style>
@@ -276,7 +472,7 @@
             <div class="search-form">
                 <input type="text" class="search-input" id="locationInput" placeholder="Enter your city or state">
                 <button class="search-btn" onclick="searchDiseases()">Search Diseases</button>
-                <button class="search-btn" onclick="getMyLocation()" style="background: #6c5ce7;">📍 Use My Location</button>
+                <button class="search-btn location-btn" onclick="getMyLocation()">📍 Use My Location</button>
             </div>
         </div>
         
@@ -317,14 +513,49 @@
         let isViewingMore = false;
         
         // Load navbar (if you have a navbar.html file)
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-            })
-            .catch(() => {
-                // Ignore if navbar.html doesn't exist
-            });
+        document.addEventListener("DOMContentLoaded", () => {
+            const navbar = document.getElementById("navbar");
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    navbar.innerHTML = data;
+
+                    // Now that HTML is in, bind everything:
+                    const hamburger = navbar.querySelector("#hamburgerBtn");
+                    const mobileMenu = navbar.querySelector("#mobileMenu");
+                    const desktopProfile = navbar.querySelector("#desktopProfile");
+                    const mobileProfile = navbar.querySelector("#mobileProfile");
+                    const logoBtn = navbar.querySelector("#logoBtn");
+
+                    // Hamburger toggle
+                    hamburger?.addEventListener("click", () => {
+                        mobileMenu?.classList.toggle("show");
+                    });
+
+                    // Logo click
+                    logoBtn?.addEventListener("click", () => {
+                        window.location.href = "index.html";
+                    });
+
+                    // Profile logic
+                    const openProfile = () => {
+                        const user = JSON.parse(localStorage.getItem("user"));
+                        if (!user) {
+                            alert("Please login first");
+                            window.location.href = "getstarted.html";
+                            return;
+                        }
+                        window.location.href =
+                            user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+                    };
+
+                    desktopProfile?.addEventListener("click", openProfile);
+                    mobileProfile?.addEventListener("click", openProfile);
+                })
+                .catch(err => {
+                    console.log('Navbar not found, continuing without it');
+                });
+        });
         
         // Get user's location
         function getMyLocation() {
@@ -419,7 +650,7 @@
             showLoading(true);
             
             try {
-                const response = await fetch(`http://localhost:5000/api/diseases?location=${encodeURIComponent(currentLocation)}&viewMore=true&limit=20&page=${currentPage + 1}`);
+                const response = await fetch(`https://docmate-gq1z.onrender.com/api/diseases?location=${encodeURIComponent(currentLocation)}&viewMore=true&limit=20&page=${currentPage + 1}`);
                 const data = await response.json();
                 
                 if (data.success) {
@@ -507,12 +738,6 @@
             `;
         }
         
-        // Update results info
-        function updateResultsInfo(showing, total) {
-            // This function is no longer needed since we removed the results info section
-            // Keeping it for compatibility but it does nothing
-        }
-        
         // Show view more button
         function showViewMoreButton(remainingCount) {
             const viewMoreSection = document.getElementById('viewMoreSection');
@@ -555,7 +780,22 @@
             document.getElementById('locationInput').value = 'Delhi';
             searchDiseases();
         });
+        
+        // Handle window resize for better responsiveness
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                // Trigger any necessary layout adjustments
+                const cards = document.querySelectorAll('.disease-card');
+                cards.forEach(card => {
+                    card.style.opacity = '0.9';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 50);
+                });
+            }, 250);
+        });
     </script>
-
 </body>
 </html>

@@ -1,57 +1,75 @@
+<!-- Responsive version of doctor-signup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doctor Signup - DocMate</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       background: #f4fefe;
-      padding-top: 100px;
       font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding-top: 100px;
     }
+
     .signup-box {
-      background: white;
       max-width: 450px;
       margin: auto;
       padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
     }
-    .signup-box h2 {
+
+    h2 {
       color: #0984e3;
+      text-align: center;
       margin-bottom: 20px;
     }
-    .signup-box input, .signup-box select {
+
+    input {
       width: 100%;
       padding: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-radius: 10px;
-      border: 1px solid #ddd;
-      outline: none;
+      border: 1px solid #ccc;
+      font-size: 16px;
     }
-    .signup-box button {
+
+    button {
       width: 100%;
+      padding: 12px;
       background: #0984e3;
       color: white;
       border: none;
-      padding: 12px;
       border-radius: 10px;
       font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
     }
-    .signup-box button:hover {
+
+    button:hover {
       background: #0652dd;
     }
+
     .toggle {
       text-align: center;
       margin-top: 15px;
     }
+
     .toggle a {
-      color: #00b894;
+      color: #0984e3;
       text-decoration: none;
       font-weight: 500;
+    }
+
+    @media (max-width: 480px) {
+      .signup-box {
+        margin: 20px;
+        padding: 25px;
+      }
     }
   </style>
 </head>
@@ -60,86 +78,80 @@
 
   <div class="signup-box">
     <h2>Doctor Signup</h2>
-    <input type="text" placeholder="Full Name" id="name" required />
-    <input type="email" placeholder="Email" id="email" required />
-    <input type="password" placeholder="Password" id="password" required />
-    <input type="password" placeholder="Confirm Password" id="confirmPassword" required />
-    <input type="text" placeholder="Medical Registration Number" id="regNumber" required />
-
-    <select id="degree" required>
-      <option value="" disabled selected>Choose Degree</option>
-      <option value="MBBS">MBBS</option>
-      <option value="BDS">BDS</option>
-      <option value="MD">MD</option>
-      <option value="MS">MS</option>
-      <option value="MCh">MCh</option>
-      <option value="DM">DM</option>
-    </select>
-
-    <select id="specialization" required>
-      <option value="" disabled selected>Specialization</option>
-      <option>Cardiology</option>
-      <option>Dermatology</option>
-      <option>ENT</option>
-      <option>General Physician</option>
-      <option>Gynecology</option>
-      <option>Neurology</option>
-      <option>Orthopedics</option>
-      <option>Pediatrics</option>
-      <option>Psychiatry</option>
-      <option>Surgery</option>
-    </select>
-
-    <input type="text" placeholder="Years of Experience" id="experience" required />
-
-    <button onclick="handleDoctorSignup()">Sign Up</button>
-    <div class="toggle">Already have an account? <a href="doctor-login.html">Login here</a></div>
-</div>
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+    <button onclick="handleSignup()">Sign Up</button>
+    <div class="toggle">
+      Already have an account? <a href="doctor-login.html">Login here</a>
+    </div>
+  </div>
 
   <script>
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-      });
-    async function handleDoctorSignup() {
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("navbar.html")
+        .then((res) => res.text())
+        .then((data) => {
+          const navbar = document.getElementById("navbar");
+          navbar.innerHTML = data;
+
+          const hamburger = navbar.querySelector("#hamburgerBtn");
+          const mobileMenu = navbar.querySelector("#mobileMenu");
+          const desktopProfile = navbar.querySelector("#desktopProfile");
+          const mobileProfile = navbar.querySelector("#mobileProfile");
+          const logoBtn = navbar.querySelector("#logoBtn");
+
+          hamburger?.addEventListener("click", () => {
+            mobileMenu?.classList.toggle("show");
+          });
+
+          logoBtn?.addEventListener("click", () => {
+            window.location.href = "index.html";
+          });
+
+          const openProfile = () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user) {
+              alert("Please login first");
+              window.location.href = "getstarted.html";
+              return;
+            }
+            window.location.href = user.role === "doctor"
+              ? "doctor-dashboard.html"
+              : "patient-dashboard.html";
+          };
+
+          desktopProfile?.addEventListener("click", openProfile);
+          mobileProfile?.addEventListener("click", openProfile);
+        });
+    });
+
+    async function handleSignup() {
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
       const confirmPassword = document.getElementById("confirmPassword").value.trim();
-      const regNumber = document.getElementById("regNumber").value.trim();
-      const degree = document.getElementById("degree").value;
-      const specialization = document.getElementById("specialization").value;
-      const experience = document.getElementById("experience").value.trim();
 
-     if (!name || !email || !password || !confirmPassword || !regNumber || !degree || !specialization || !experience) {
+      if (!name || !email || !password || !confirmPassword) {
         return alert("Please fill in all fields");
-     }
+      }
 
       if (password !== confirmPassword) {
         return alert("Passwords do not match");
       }
 
       try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-          role: "doctor",
-          regNumber,
-          degree,
-          specialization,
-          experience
-         })
-       });
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password, role: "doctor" })
+        });
 
         const data = await res.json();
 
         if (data.success) {
-          alert("Doctor account created! Please login.");
+          alert("Signup successful! Please log in.");
           window.location.href = "doctor-login.html";
         } else {
           alert(data.message || "Signup failed.");
@@ -148,8 +160,7 @@
         console.error(error);
         alert("Something went wrong. Try again.");
       }
-   }
-</script>
-
+    }
+  </script>
 </body>
 </html>

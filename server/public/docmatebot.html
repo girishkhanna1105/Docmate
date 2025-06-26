@@ -145,115 +145,6 @@
             cursor: not-allowed;
         }
         
-        .symptom-checker {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-        }
-        
-        .symptom-form {
-            display: grid;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .symptom-input-group {
-            display: grid;
-            grid-template-columns: 1fr 120px 120px;
-            gap: 10px;
-            align-items: center;
-        }
-        
-        .symptom-input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-        }
-        
-        .symptom-select {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-        }
-        
-        .add-symptom-btn {
-            background: #74b9ff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-        
-        .add-symptom-btn:hover {
-            background: #0984e3;
-        }
-        
-        .analyze-btn {
-            background: #e17055;
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: background 0.3s;
-        }
-        
-        .analyze-btn:hover {
-            background: #d63031;
-        }
-        
-        .assessment-result {
-            background: #d1f2eb;
-            border: 1px solid #00b894;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-        }
-        
-        .assessment-title {
-            color: #00b894;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .conditions-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .condition-item {
-            background: white;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 8px;
-            border-left: 4px solid #00b894;
-        }
-        
-        .urgency-high {
-            background: #fff5f5;
-            border-left-color: #e74c3c;
-        }
-        
-        .urgency-medium {
-            background: #fffbf0;
-            border-left-color: #f39c12;
-        }
-        
-        .urgency-low {
-            background: #f0fff4;
-            border-left-color: #27ae60;
-        }
-        
         .typing-indicator {
             display: none;
             align-items: center;
@@ -305,19 +196,145 @@
             background: #74b9ff;
             color: white;
         }
-        
+
+        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             .chatbot-container {
-                padding: 120px 10px 20px;
-                height: calc(100vh - 140px);
+                padding: 100px 10px 10px;
+                height: calc(100vh - 110px);
+            }
+            
+            .chat-header {
+                padding: 20px 15px;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .chat-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .chat-header p {
+                font-size: 0.9rem;
+            }
+            
+            .chat-messages {
+                padding: 15px;
+                min-height: 300px;
+                max-height: calc(100vh - 300px);
+            }
+            
+            .message {
+                margin-bottom: 15px;
+                gap: 8px;
+            }
+            
+            .message-avatar {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
             }
             
             .message-content {
                 max-width: 85%;
+                padding: 12px 15px;
+                font-size: 14px;
             }
             
-            .symptom-input-group {
-                grid-template-columns: 1fr;
+            .chat-input-container {
+                padding: 15px;
+                border-radius: 0 0 15px 15px;
+                gap: 8px;
+            }
+            
+            .chat-input {
+                padding: 10px 12px;
+                font-size: 14px;
+                min-height: 40px;
+                max-height: 80px;
+            }
+            
+            .send-button {
+                padding: 10px 15px;
+                font-size: 14px;
+                min-width: 50px;
+            }
+            
+            .quick-actions {
+                gap: 8px;
+                margin-top: 10px;
+            }
+            
+            .quick-action-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .typing-indicator {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* Extra Small Screens */
+        @media (max-width: 480px) {
+            .chatbot-container {
+                padding: 90px 5px 5px;
+                height: calc(100vh - 95px);
+            }
+            
+            .chat-header {
+                padding: 15px 10px;
+            }
+            
+            .chat-header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .chat-messages {
+                padding: 10px;
+                min-height: 250px;
+            }
+            
+            .message-content {
+                max-width: 90%;
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+            
+            .chat-input-container {
+                padding: 10px;
+            }
+            
+            .chat-input {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+            
+            .send-button {
+                padding: 8px 12px;
+                font-size: 13px;
+                min-width: 45px;
+            }
+            
+            .quick-action-btn {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+        }
+
+        /* Landscape Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .chatbot-container {
+                padding: 80px 10px 5px;
+                height: calc(100vh - 85px);
+            }
+            
+            .chat-header {
+                padding: 15px;
+            }
+            
+            .chat-messages {
+                max-height: calc(100vh - 220px);
             }
         }
     </style>
@@ -332,14 +349,13 @@
         </div>
         
         <div class="chat-messages" id="chatMessages">
-            <div class="message bot">
+            <div class="message bot" id="initialBotMessage">
                 <div class="message-avatar bot-avatar">🤖</div>
                 <div class="message-content bot-message">
                     Hello! I'm DocMate AI. I can help you understand your symptoms and provide health guidance. How are you feeling today?
                     <div class="quick-actions">
                         <button class="quick-action-btn" onclick="sendQuickMessage('I have a headache')">I have a headache</button>
                         <button class="quick-action-btn" onclick="sendQuickMessage('I feel feverish')">I feel feverish</button>
-                        <button class="quick-action-btn" onclick="sendQuickMessage('I want to check my symptoms')">Check symptoms</button>
                     </div>
                 </div>
             </div>
@@ -369,14 +385,59 @@
     <script>
         let sessionId = null;
         let symptoms = [];
+        let hasUserInteracted = false; // Track if user has sent a message
         
         // Load navbar
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar').innerHTML = data;
+        document.addEventListener("DOMContentLoaded", () => {
+            const navbar = document.getElementById("navbar");
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    navbar.innerHTML = data;
+
+                    // Now that HTML is in, bind everything:
+                    const hamburger = navbar.querySelector("#hamburgerBtn");
+                    const mobileMenu = navbar.querySelector("#mobileMenu");
+                    const desktopProfile = navbar.querySelector("#desktopProfile");
+                    const mobileProfile = navbar.querySelector("#mobileProfile");
+                    const logoBtn = navbar.querySelector("#logoBtn");
+
+                    // Hamburger toggle
+                    hamburger?.addEventListener("click", () => {
+                        mobileMenu?.classList.toggle("show");
+                    });
+
+                    // Logo click
+                    logoBtn?.addEventListener("click", () => {
+                        window.location.href = "index.html";
+                    });
+
+                    // Profile logic
+                    const openProfile = () => {
+                        const user = JSON.parse(localStorage.getItem("user"));
+                        if (!user) {
+                            alert("Please login first");
+                            window.location.href = "getstarted.html";
+                            return;
+                        }
+                        window.location.href =
+                            user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+                    };
+
+                    desktopProfile?.addEventListener("click", openProfile);
+                    mobileProfile?.addEventListener("click", openProfile);
+                });
+
+            // Add enter key support for textarea
+            const messageInput = document.getElementById('messageInput');
+            messageInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
             });
-        
+        });
+
         // Initialize chat session
         async function initializeChat() {
             try {
@@ -409,6 +470,15 @@
             
             if (!message) return;
             
+            // Hide initial bot message after first user interaction
+            if (!hasUserInteracted) {
+                const initialMessage = document.getElementById('initialBotMessage');
+                if (initialMessage) {
+                    initialMessage.style.display = 'none';
+                }
+                hasUserInteracted = true;
+            }
+            
             // Add user message to chat
             addMessage('user', message);
             input.value = '';
@@ -434,13 +504,8 @@
                 if (data.success) {
                     addMessage('bot', data.data.botMessage.message);
                     
-                   
-                    if (message.toLowerCase().includes('symptom') || 
-                        message.toLowerCase().includes('feel') ||
-                        message.toLowerCase().includes('pain') ||
-                        message.toLowerCase().includes('sick')) {
-                        showSymptomChecker();
-                    }
+                    // Removed the symptom checker logic that was triggered by keywords
+                    // The bot will now respond normally to all messages without showing the symptom checker card
                 } else {
                     addMessage('bot', 'Sorry, I encountered an error. Please try again.');
                 }
@@ -478,111 +543,14 @@
             sendMessage();
         }
         
-        // Show symptom checker
-        function showSymptomChecker() {
-            const checkerHTML = `
-                <div class="symptom-checker">
-                    <h4>🩺 Detailed Symptom Analysis</h4>
-                    <p>For better analysis, please provide detailed information about your symptoms:</p>
-                    
-                    <div class="symptom-form" id="symptomForm">
-                        <div class="symptom-input-group">
-                            <input type="text" class="symptom-input" placeholder="Enter symptom (e.g., headache, fever)" />
-                            <select class="symptom-select">
-                                <option value="Mild">Mild</option>
-                                <option value="Moderate">Moderate</option>
-                                <option value="Severe">Severe</option>
-                            </select>
-                            <input type="text" class="symptom-input" placeholder="Duration (e.g., 2 days)" />
-                        </div>
-                    </div>
-                    
-                    <button class="add-symptom-btn" onclick="addSymptomRow()">+ Add Another Symptom</button>
-                    <button class="analyze-btn" onclick="analyzeSymptoms()">🔍 Analyze Symptoms</button>
-                </div>
-            `;
-            
-            addMessage('bot', checkerHTML);
-        }
-        
-        // Add symptom row
-        function addSymptomRow() {
-            const form = document.getElementById('symptomForm');
-            const newRow = document.createElement('div');
-            newRow.className = 'symptom-input-group';
-            newRow.innerHTML = `
-                <input type="text" class="symptom-input" placeholder="Enter symptom" />
-                <select class="symptom-select">
-                    <option value="Mild">Mild</option>
-                    <option value="Moderate">Moderate</option>
-                    <option value="Severe">Severe</option>
-                </select>
-                <input type="text" class="symptom-input" placeholder="Duration" />
-            `;
-            form.appendChild(newRow);
-        }
-        
-        // Analyze symptoms
-               async function analyzeSymptoms() {
-            const form = document.getElementById('symptomForm');
-            const symptomGroups = form.querySelectorAll('.symptom-input-group');
-            const collectedSymptoms = [];
-
-            symptomGroups.forEach(group => {
-                const symptom = group.querySelector('input:nth-child(1)').value.trim();
-                const severity = group.querySelector('select').value;
-                const duration = group.querySelector('input:nth-child(3)').value.trim();
-
-                if (symptom && duration) {
-                    collectedSymptoms.push({ symptom, severity, duration });
-                }
-            });
-
-            if (collectedSymptoms.length === 0) {
-                addMessage('bot', 'Please enter at least one valid symptom with duration.');
-                return;
-            }
-
-            // Show loading indicator
-            showTyping(true);
-
-            try {
-                const response = await fetch('/api/chatbot/analyze', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ sessionId, symptoms: collectedSymptoms })
-                });
-
-                const data = await response.json();
-                showTyping(false);
-
-                if (data.success) {
-                    const conditionsHTML = data.data.possibleConditions.map(cond => `
-                        <li class="condition-item urgency-${cond.urgency.toLowerCase()}">
-                            <strong>${cond.name}</strong> - ${cond.urgency} urgency
-                            <br><small>${cond.description}</small>
-                        </li>
-                    `).join('');
-
-                    const resultBlock = `
-                        <div class="assessment-result">
-                            <div class="assessment-title">🩻 Possible Conditions</div>
-                            <ul class="conditions-list">${conditionsHTML}</ul>
-                        </div>
-                    `;
-                    addMessage('bot', resultBlock);
-                } else {
-                    addMessage('bot', 'Sorry, I couldn’t analyze the symptoms right now.');
-                }
-            } catch (error) {
-                showTyping(false);
-                addMessage('bot', 'Something went wrong while analyzing. Please try again later.');
-            }
-        }
-
         function showTyping(show) {
             const typing = document.getElementById('typingIndicator');
             typing.style.display = show ? 'flex' : 'none';
+            
+            if (show) {
+                const messagesContainer = document.getElementById('chatMessages');
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
         }
 
         // Start the session on page load

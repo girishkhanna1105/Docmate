@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Appointments</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4fefe;
+      padding-top: 100px;
+      padding-bottom: 50px;
+    }
+
+    h1 {
+      color: #00b894;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .card p {
+      margin: 6px 0;
+      color: #444;
+    }
+
+    .card button {
+      margin-top: 10px;
+      background: #d63031;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background: #c0392b;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        margin: 15px;
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .card p, .card h3 {
+        font-size: 15px;
+      }
+
+      .card button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+  <h1>Your Appointments</h1>
+  <div id="appointments"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+     const navbar = document.getElementById("navbar");
+     fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        navbar.innerHTML = data;
+
+      // Now that HTML is in, bind everything:
+        const hamburger = navbar.querySelector("#hamburgerBtn");
+        const mobileMenu = navbar.querySelector("#mobileMenu");
+        const desktopProfile = navbar.querySelector("#desktopProfile");
+        const mobileProfile = navbar.querySelector("#mobileProfile");
+        const logoBtn = navbar.querySelector("#logoBtn");
+
+      // Hamburger toggle
+        hamburger?.addEventListener("click", () => {
+          mobileMenu?.classList.toggle("show");
+        });
+
+      // Logo click
+         logoBtn?.addEventListener("click", () => {
+           window.location.href = "index.html";
+         });
+
+      // Profile logic
+         const openProfile = () => {
+          const user = JSON.parse(localStorage.getItem("user"));
+          if (!user) {
+            alert("Please login first");
+            window.location.href = "getstarted.html";
+            return;
+          }
+          window.location.href =
+            user.role === "doctor" ? "doctor-dashboard.html" : "patient-dashboard.html";
+        };
+
+        desktopProfile?.addEventListener("click", openProfile);
+        mobileProfile?.addEventListener("click", openProfile);
+      });
+    });
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || user.role !== "patient") window.location.href = "patient-login.html";
+
+    fetch(`/api/appointments/patient/${user.email}`)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("appointments");
+        if (data.success && data.data.length) {
+          data.data.forEach(apt => {
+            container.innerHTML += `
+              <div class="card">
+                <h3>${apt.appointmentDetails.consultationType}</h3>
+                <p><b>Date:</b> ${apt.appointmentDetails.preferredDate}</p>
+                <p><b>Time:</b> ${apt.appointmentDetails.preferredTime}</p>
+                <p><b>Status:</b> ${apt.status}</p>
+                <p><b>Symptoms:</b> ${apt.medicalInfo.symptoms.join(", ")}</p>
+                ${apt.status !== "Cancelled" ? `<button onclick="cancel('${apt._id}')">Cancel</button>` : ''}
+              </div>
+            `;
+          });
+        } else {
+          container.innerHTML = "<p style='text-align:center;'>No appointments found.</p>";
+        }
+      });
+
+    async function cancel(id) {
+      if (confirm("Cancel this appointment?")) {
+        const res = await fetch(`/api/appointments/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        alert(data.message);
+        location.reload();
+      }
+    }
+  </script>
+</body>
+</html>

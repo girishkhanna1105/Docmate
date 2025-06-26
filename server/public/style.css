@@ -61,7 +61,7 @@ html, body {
     margin-bottom: 10px;
 }
 .card p{
-    font-size: 23px;
+    font-size: 16px;
     margin-top: 20px;
     margin-bottom: 70px
 }
@@ -73,6 +73,93 @@ html, body {
     text-decoration: none;
     color: black;
 }
+/* Existing styles remain the same... */
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 60px;
+  }
+
+  .hero p {
+    font-size: 20px;
+  }
+
+  .card {
+    max-width: 200px;
+    margin-right: 20px;
+  }
+
+  .card p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .card {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .items {
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  .right-box {
+    margin-top: 10px;
+  }
+
+  .logo img {
+    height: 100px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .get-started {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  .card p {
+    font-size: 16px;
+  }
+
+  .items li a {
+    font-size: 16px;
+  }
+}
+
 /* *{
     margin: 0;
     padding: 0;

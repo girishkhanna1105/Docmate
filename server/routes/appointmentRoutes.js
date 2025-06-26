@@ -4,26 +4,29 @@ const router = express.Router();
 
 // POST /api/appointments - Book new appointment
 router.post('/', async (req, res) => {
+  console.log("📨 Appointment incoming:", req.body); // Debug log
   try {
-    const appointment = new Appointment(req.body);
-    await appointment.save();
-    
-    // Here you would typically send confirmation email
-    // await sendConfirmationEmail(appointment);
-    
-    res.status(201).json({
-      success: true,
-      data: appointment,
-      message: 'Appointment booked successfully'
-    });
-  } catch (error) {
-    res.status(400).json({
-      success: false,
-      error: 'Failed to book appointment',
-      details: error.message
-    });
+    const newAppointment = new Appointment(req.body);
+    await newAppointment.save();
+    res.status(201).json({ success: true, data: newAppointment });
+  } catch (err) {
+    console.error("❌ Booking error:", err); // Error log
+    res.status(500).json({ success: false, message: err.message });
   }
 });
+router.get('/patient/:email', async (req, res) => {
+  console.log("🔍 Email received in request:", req.params.email); // Add this
+  try {
+    const appointments = await Appointment.find({ 'patientInfo.email': req.params.email });
+    console.log("📦 Found appointments:", appointments);
+    res.json({ success: true, data: appointments });
+  } catch (err) {
+    console.error("❌ Error fetching appointments:", err);
+    res.status(500).json({ success: false, message: 'Failed to fetch appointments' });
+  }
+});
+
+
 
 // GET /api/appointments/:id - Get appointment by ID
 router.get('/:id', async (req, res) => {
